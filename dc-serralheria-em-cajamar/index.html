@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC Serralheria em Cajamar | Serviços de Serralheria de Confiança</title>
+<meta name="description" content="DC Serralheria em Cajamar - Avaliação 5.0 com 28 avaliações no Google. Atendimento rápido e de qualidade. Fale agora pelo WhatsApp.">
+<style>
+  :root{
+    --preto: #121212;
+    --preto-suave: #1c1c1e;
+    --metal: #b0b3b8;
+    --metal-claro: #e4e6ea;
+    --laranja: #ff6a1a;
+    --laranja-escuro: #d94e00;
+    --branco: #ffffff;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:var(--branco);
+    color:var(--preto);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+
+  .placeholder{
+    display:inline-block;
+    background:#fff3e6;
+    color:#a05a00;
+    border:1px dashed #ffb073;
+    padding:2px 8px;
+    border-radius:6px;
+    font-size:0.85em;
+  }
+
+  /* HEADER */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(18,18,18,0.92);
+    backdrop-filter:blur(6px);
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:padding 0.3s;
+  }
+
+  .logo{
+    font-size:1.3rem;
+    font-weight:800;
+    color:var(--branco);
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--laranja);}
+
+  .btn-header{
+    background:var(--laranja);
+    color:var(--branco);
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:transform 0.2s, background 0.2s;
+    white-space:nowrap;
+  }
+  .btn-header:hover{
+    background:var(--laranja-escuro);
+    transform:translateY(-2px);
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 24px 80px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,106,26,0.25), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(255,106,26,0.15), transparent 50%),
+      linear-gradient(135deg, var(--preto) 0%, #262626 50%, #1a1a1a 100%);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 20px);
+    pointer-events:none;
+  }
+
+  .hero-content{
+    max-width:800px;
+    position:relative;
+    z-index:2;
+    color:var(--branco);
+  }
+
+  .hero-badge{
+    display:inline-block;
+    background:rgba(255,106,26,0.15);
+    border:1px solid var(--laranja);
+    color:var(--laranja);
+    padding:6px 18px;
+    border-radius:30px;
+    font-size:0.85rem;
+    font-weight:700;
+    margin-bottom:24px;
+    letter-spacing:0.5px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    font-weight:900;
+    line-height:1.1;
+    margin-bottom:20px;
+    letter-spacing:-1px;
+  }
+
+  .hero h1 span{
+    color:var(--laranja);
+  }
+
+  .hero p{
+    font-size:1.2rem;
+    color:var(--metal-claro);
+    max-width:600px;
+    margin:0 auto 36px;
+  }
+
+  .hero-cta{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    background:var(--laranja);
+    color:var(--branco);
+    padding:16px 34px;
+    border-radius:40px;
+    font-weight:800;
+    font-size:1.05rem;
+    box-shadow:0 10px 30px rgba(255,106,26,0.35);
+    transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-primary:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 16px 40px rgba(255,106,26,0.5);
+  }
+
+  .btn-secondary{
+    background:transparent;
+    border:2px solid var(--metal);
+    color:var(--branco);
+    padding:14px 32px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1.05rem;
+    transition:all 0.25s;
+  }
+  .btn-secondary:hover{
+    border-color:var(--laranja);
+    color:var(--laranja);
+    transform:translateY(-4px);
+  }
+
+  .rating-mini{
+    margin-top:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:var(--metal-claro);
+    font-size:1rem;
+  }
+  .stars{color:#ffb400; letter-spacing:2px;}
+
+  /* SECTION BASE */
+  section{
+    padding:100px 24px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .section-title{
+    text-align:center;
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+    font-weight:900;
+    margin-bottom:16px;
+    color:var(--preto);
+  }
+  .section-title span{color:var(--laranja);}
+
+  .section-sub{
+    text-align:center;
+    color:#666;
+    max-width:600px;
+    margin:0 auto 60px;
+    font-size:1.05rem;
+  }
+
+  /* SOBRE */
+  .sobre-box{
+    background:var(--preto-suave);
+    color:var(--branco);
+    border-radius:24px;
+    padding:60px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .sobre-box::after{
+    content:"";
+    position:absolute;
+    width:300px;height:300px;
+    background:radial-gradient(circle, rgba(255,106,26,0.25), transparent 70%);
+    top:-100px;right:-100px;
+  }
+  .sobre-box p{
+    position:relative;
+    z-index:2;
+    font-size:1.1rem;
+    max-width:700px;
+    margin:0 auto;
+    color:var(--metal-claro);
+  }
+
+  /* SERVIÇOS */
+  .servicos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:28px;
+  }
+
+  .servico-card{
+    background:var(--branco);
+    border:1px solid #eee;
+    border-radius:20px;
+    padding:36px 28px;
+    text-align:center;
+    transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .servico-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    border-color:var(--laranja);
+  }
+  .servico-icon{
+    width:60px;height:60px;
+    margin:0 auto 20px;
+    background:linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
+    border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;
+    color:var(--branco);
+  }
+  .servico-card h3{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    color:var(--preto);
+  }
+
+  /* AVALIAÇÕES */
+  .avaliacoes{
+    background:linear-gradient(135deg, #fff6ef, #fff);
+    border-radius:24px;
+    padding:60px 40px;
+    text-align:center;
+  }
+  .avaliacoes .nota{
+    font-size:4rem;
+    font-weight:900;
+    color:var(--laranja);
+    line-height:1;
+  }
+  .avaliacoes .estrelas{
+    color:#ffb400;
+    font-size:1.8rem;
+    letter-spacing:6px;
+    margin:12px 0;
+  }
+  .avaliacoes p{
+    color:#555;
+    font-size:1.05rem;
+  }
+
+  /* CONTATO */
+  .contato-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    background:var(--preto);
+    border-radius:24px;
+    padding:60px 40px;
+    color:var(--branco);
+  }
+  @media(max-width:768px){
+    .contato-wrap{grid-template-columns:1fr;}
+  }
+  .contato-info h3{
+    font-size:1.8rem;
+    margin-bottom:20px;
+    font-weight:800;
+  }
+  .contato-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+    color:var(--metal-claro);
+    font-size:1.05rem;
+  }
+  .contato-item .icon{
+    width:44px;height:44px;
+    background:rgba(255,106,26,0.15);
+    border:1px solid var(--laranja);
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--laranja);
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+
+  .contato-cta{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:rgba(255,255,255,0.04);
+    border-radius:18px;
+    padding:40px 24px;
+  }
+  .contato-cta p{
+    color:var(--metal-claro);
+    margin-bottom:24px;
+    font-size:1.05rem;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--preto-suave);
+    color:var(--metal);
+    text-align:center;
+    padding:30px 24px;
+    font-size:0.9rem;
+  }
+  footer span{color:var(--laranja);font-weight:700;}
+
+  /* WHATSAPP FLUTUANTE */
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    background:#25D366;
+    color:#fff;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    z-index:99;
+    transition:transform 0.25s;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.1);
+  }
+
+  @media(max-width:600px){
+    section{padding:70px 20px;}
+    .sobre-box, .avaliacoes, .contato-wrap{padding:40px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">DC <span>Serralheria</span></div>
+  <a href="https://wa.me/5511986875282" class="btn-header" target="_blank" rel="noopener">Falar no WhatsApp</a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">★ Avaliação 5.0 no Google</span>
+    <h1>Serralheria de <span>Confiança</span> em Cajamar</h1>
+    <p>Soluções em serralheria com qualidade, precisão e atendimento rápido para sua casa ou empresa.</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/5511986875282" class="btn-primary" target="_blank" rel="noopener">Solicitar Orçamento</a>
+      <a href="tel:+5511986875282" class="btn-secondary">Ligar Agora</a>
+    </div>
+    <div class="rating-mini">
+      <span class="stars">★★★★★</span>
+      <span>5.0 (28 avaliações)</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2 class="section-title">Sobre a <span>DC Serralheria</span></h2>
+  <p class="section-sub">Conheça um pouco mais sobre nosso trabalho e compromisso com você.</p>
+  <div class="sobre-box">
+    <p><span class="placeholder">[ADICIONAR: texto institucional sobre a empresa]</span><br><br>
+    Atendemos Cajamar e região com dedicação para entregar o melhor serviço em serralheria, sempre buscando a satisfação total dos nossos clientes — refletida na nossa nota máxima no Google.</p>
+  </div>
+</section>
+
+<section id="servicos">
+  <h2 class="section-title">Nossos <span>Serviços</span></h2>
+  <p class="section-sub">Confira as soluções que oferecemos.</p>
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icon">🔧</div>
+      <h3><span class="placeholder">[ADICIONAR: serviço 1]</span></h3>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">🔩</div>
+      <h3><span class="placeholder">[ADICIONAR: serviço 2]</span></h3>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">🛠️</div>
+      <h3><span class="placeholder">[ADICIONAR: serviço 3]</span></h3>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="avaliacoes">
+    <div class="nota">5.0</div>
+    <div class="estrelas">★★★★★</div>
+    <p>Baseado em 28 avaliações no Google</p>
+  </div>
+</section>
+
+<section id="contato">
+  <h2 class="section-title">Fale <span>Conosco</span></h2>
+  <p class="section-sub">Estamos prontos para atender sua necessidade.</p>
+  <div class="contato-wrap">
+    <div class="contato-info">
+      <h3>Informações de Contato</h3>
+      <div class="contato-item">
+        <div class="icon">📞</div>
+        <div>Telefone: (11) 98687-5282</div>
+      </div>
+      <div class="contato-item">
+        <div class="icon">💬</div>
+        <div>WhatsApp: (11) 98687-5282</div>
+      </div>
+      <div class="contato-item">
+        <div class="icon">📍</div>
+        <div><span class="placeholder">[ADICIONAR: endereço completo]</span></div>
+      </div>
+    </div>
+    <div class="contato-cta">
+      <p>Peça agora mesmo seu orçamento sem compromisso.</p>
+      <a href="https://wa.me/5511986875282" class="btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 <span>DC Serralheria</span> em Cajamar. Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5511986875282" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+</body>
+</html>
