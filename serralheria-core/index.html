@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serralheria Corê</title>
+<meta name="description" content="Serralheria Corê — soluções em serralheria com qualidade e confiança. Avaliação 4.9 no Google.">
+<style>
+  :root{
+    --preto: #14161a;
+    --preto2: #1e2126;
+    --grafite: #2b2f36;
+    --laranja: #ff6a1a;
+    --laranja2: #ff9248;
+    --branco: #f7f7f5;
+    --cinza: #9aa0a8;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background:var(--preto);
+    color:var(--branco);
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+
+  .container{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* NAV */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:999;
+    background:rgba(20,22,26,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 24px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .logo{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:1px;
+    color:var(--branco);
+  }
+  .logo span{color:var(--laranja);}
+  nav ul{
+    display:flex;
+    gap:32px;
+    list-style:none;
+  }
+  nav ul li a{
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--cinza);
+    transition:color .25s;
+  }
+  nav ul li a:hover{color:var(--laranja2);}
+  .nav-cta{
+    background:var(--laranja);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:transform .25s, background .25s;
+  }
+  .nav-cta:hover{background:var(--laranja2); transform:translateY(-2px);}
+  .menu-toggle{display:none;font-size:1.6rem;background:none;border:none;color:var(--branco);cursor:pointer;}
+
+  @media (max-width:800px){
+    nav ul{
+      position:fixed;
+      top:70px;left:0;right:0;
+      background:var(--preto2);
+      flex-direction:column;
+      align-items:center;
+      gap:20px;
+      padding:24px 0;
+      transform:translateY(-150%);
+      transition:transform .35s ease;
+    }
+    nav ul.active{transform:translateY(0);}
+    .menu-toggle{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,106,26,0.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(255,106,26,0.12), transparent 50%),
+      linear-gradient(160deg, #0d0e10 0%, #14161a 40%, #1e2126 100%);
+    padding-top:90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(255,106,26,0.25), transparent 70%);
+    top:-200px;right:-200px;
+    filter:blur(40px);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+  }
+  .hero-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,106,26,0.12);
+    border:1px solid rgba(255,106,26,0.4);
+    color:var(--laranja2);
+    font-size:0.85rem;
+    font-weight:700;
+    padding:8px 16px;
+    border-radius:30px;
+    margin-bottom:24px;
+    letter-spacing:0.5px;
+  }
+  .hero h1{
+    font-size:3.4rem;
+    line-height:1.08;
+    font-weight:800;
+    letter-spacing:-1px;
+    margin-bottom:22px;
+  }
+  .hero h1 span{
+    color:var(--laranja);
+    display:block;
+  }
+  .hero p{
+    font-size:1.15rem;
+    color:var(--cinza);
+    margin-bottom:36px;
+    line-height:1.6;
+    max-width:560px;
+  }
+  .hero-btns{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--laranja);
+    color:#fff;
+    padding:16px 32px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:1rem;
+    box-shadow:0 10px 30px -8px rgba(255,106,26,0.6);
+    transition:transform .25s, box-shadow .25s;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 34px -6px rgba(255,106,26,0.8);}
+  .btn-secondary{
+    border:1px solid rgba(255,255,255,0.25);
+    color:var(--branco);
+    padding:16px 32px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:1rem;
+    transition:border-color .25s, background .25s;
+  }
+  .btn-secondary:hover{border-color:var(--laranja); background:rgba(255,106,26,0.08);}
+
+  .hero-rating{
+    margin-top:48px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .stars{color:var(--laranja2); font-size:1.2rem; letter-spacing:2px;}
+  .hero-rating-text{color:var(--cinza); font-size:0.95rem;}
+  .hero-rating-text strong{color:var(--branco);}
+
+  @media (max-width:640px){
+    .hero h1{font-size:2.4rem;}
+    .hero p{font-size:1rem;}
+  }
+
+  /* SECTIONS GENERAL */
+  section{
+    padding:110px 0;
+    position:relative;
+  }
+  .section-label{
+    color:var(--laranja2);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:2.4rem;
+    font-weight:800;
+    margin-bottom:20px;
+    letter-spacing:-0.5px;
+  }
+  .section-desc{
+    color:var(--cinza);
+    max-width:640px;
+    font-size:1.05rem;
+    line-height:1.7;
+    margin-bottom:50px;
+  }
+
+  /* SOBRE */
+  .sobre{
+    background:var(--preto2);
+  }
+  .sobre-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .sobre-visual{
+    height:380px;
+    border-radius:18px;
+    background:linear-gradient(135deg, var(--grafite), #12141a 70%);
+    border:1px solid rgba(255,106,26,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .sobre-visual::after{
+    content:"⚒";
+    font-size:6rem;
+    color:rgba(255,106,26,0.25);
+  }
+  .sobre-text p{
+    color:var(--cinza);
+    font-size:1.05rem;
+    line-height:1.8;
+    margin-bottom:20px;
+  }
+  .placeholder{
+    color:#c98a55;
+    font-style:italic;
+    font-size:0.9rem;
+    opacity:0.85;
+  }
+
+  @media (max-width:800px){
+    .sobre-grid{grid-template-columns:1fr;}
+    .sobre-visual{height:240px;}
+  }
+
+  /* SERVICOS */
+  .servicos-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .servico-card{
+    background:var(--preto2);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:16px;
+    padding:38px 28px;
+    transition:transform .3s, border-color .3s, background .3s;
+  }
+  .servico-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,106,26,0.4);
+    background:linear-gradient(160deg, var(--preto2), #232730);
+  }
+  .servico-icon{
+    width:52px;height:52px;
+    border-radius:12px;
+    background:rgba(255,106,26,0.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:22px;
+    color:var(--laranja2);
+  }
+  .servico-card h3{
+    font-size:1.25rem;
+    margin-bottom:12px;
+    font-weight:700;
+  }
+  .servico-card p{
+    color:var(--cinza);
+    font-size:0.95rem;
+    line-height:1.6;
+  }
+
+  @media (max-width:900px){
+    .servicos-grid{grid-template-columns:1fr;}
+  }
+
+  /* AVALIACAO */
+  .avaliacao{
+    background:linear-gradient(135deg, #1a1c20, #14161a);
+    text-align:center;
+  }
+  .avaliacao-box{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--preto2);
+    border:1px solid rgba(255,106,26,0.25);
+    border-radius:20px;
+    padding:56px 40px;
+  }
+  .avaliacao-stars{
+    font-size:2rem;
+    color:var(--laranja2);
+    margin-bottom:16px;
+    letter-spacing:4px;
+  }
+  .avaliacao-nota{
+    font-size:3rem;
+    font-weight:800;
+    margin-bottom:6px;
+  }
+  .avaliacao-sub{
+    color:var(--cinza);
+    font-size:1rem;
+  }
+
+  /* CTA / CONTATO */
+  .contato{
+    background:var(--preto2);
+  }
+  .contato-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:start;
+  }
+  .contato-card{
+    background:var(--preto);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:36px;
+  }
+  .contato-item{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:26px;
+  }
+  .contato-item:last-child{margin-bottom:0;}
+  .contato-icon{
+    width:44px;height:44px;
+    border-radius:10px;
+    background:rgba(255,106,26,0.15);
+    color:var(--laranja2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+  .contato-item h4{
+    font-size:1rem;
+    margin-bottom:4px;
+  }
+  .contato-item p, .contato-item a{
+    color:var(--cinza);
+    font-size:0.95rem;
+  }
+  .contato-item a:hover{color:var(--laranja2);}
+
+  .cta-box{
+    background:linear-gradient(135deg, var(--laranja), #ff8c3d);
+    border-radius:16px;
+    padding:44px 36px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    height:100%;
+  }
+  .cta-box h3{
+    font-size:1.8rem;
+    font-weight:800;
+    margin-bottom:14px;
+    color:#1a1200;
+  }
+  .cta-box p{
+    color:#2e1c00;
+    margin-bottom:28px;
+    font-size:1rem;
+    line-height:1.6;
+  }
+  .cta-box .btn-primary{
+    background:#1a1200;
+    box-shadow:none;
+    justify-content:center;
+  }
+  .cta-box .btn-primary:hover{background:#000;}
+
+  @media (max-width:800px){
+    .contato-grid{grid-template-columns:1fr;}
+  }
+
+  footer{
+    background:var(--preto);
+    text-align:center;
+    padding:40px 24px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    color:var(--cinza);
+    font-size:0.85rem;
+  }
+  footer .logo{display:block;margin-bottom:10px;}
+
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;right:24px;
+    background:#25D366;
+    width:60px;height:60px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    color:#fff;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4);
+    z-index:998;
+    transition:transform .25s;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#" class="logo">Serralheria <span>Corê</span></a>
+    <ul id="navMenu">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5511992801242" class="nav-cta">Solicitar orçamento</a>
+    <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <span class="hero-tag">★ 4.9 no Google · 19 avaliações</span>
+    <h1>Serralheria Corê<span>Estrutura, força e acabamento.</span></h1>
+    <p>Soluções em serralheria com precisão e confiança para o seu projeto — do orçamento à entrega, com o cuidado que sua obra merece.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5511992801242" class="btn-primary">Falar no WhatsApp →</a>
+      <a href="#servicos" class="btn-secondary">Ver serviços</a>
+    </div>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span class="hero-rating-text"><strong>4.9</strong> de avaliação · 19 avaliações no Google</span>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="container sobre-grid">
+    <div class="sobre-visual"></div>
+    <div class="sobre-text">
+      <span class="section-label">Quem somos</span>
+      <h2 class="section-title">Sobre a Serralheria Corê</h2>
+      <p>A Serralheria Corê é reconhecida por clientes com nota <strong>4.9 no Google</strong> em 19 avaliações — reflexo de um trabalho sério e comprometido com qualidade.</p>
+      <p class="placeholder">[ADICIONAR: história completa, missão e diferenciais da empresa]</p>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <span class="section-label">O que fazemos</span>
+    <h2 class="section-title">Nossos Serviços</h2>
+    <p class="section-desc">Confira abaixo os serviços oferecidos pela Serralheria Corê.</p>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-icon">⚒</div>
+        <h3>[ADICIONAR: serviço 1]</h3>
+        <p class="placeholder">Descrição do serviço não informada no briefing.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🔧</div>
+        <h3>[ADICIONAR: serviço 2]</h3>
+        <p class="placeholder">Descrição do serviço não informada no briefing.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🛠</div>
+        <h3>[ADICIONAR: serviço 3]</h3>
+        <p class="placeholder">Descrição do serviço não informada no briefing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avaliacao" id="avaliacoes">
+  <div class="container">
+    <div class="avaliacao-box">
+      <div class="avaliacao-stars">★★★★★</div>
+      <div class="avaliacao-nota">4.9</div>
+      <div class="avaliacao-sub">Baseado em 19 avaliações no Google</div>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="container contato-grid">
+    <div class="contato-card">
+      <span class="section-label">Fale com a gente</span>
+      <h2 class="section-title" style="font-size:1.9rem;">Contato</h2>
+      <div class="contato-item">
+        <div class="contato-icon">📞</div>
+        <div>
+          <h4>Telefone</h4>
+          <a href="tel:+5511992801242">(11) 99280-1242</a>
+        </div>
+      </div>
+      <div class="contato-item">
+        <div class="contato-icon">💬</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <a href="https://wa.me/5511992801242">(11) 99280-1242</a>
+        </div>
+      </div>
+      <div class="contato-item">
+        <div class="contato-icon">📍</div>
+        <div>
+          <h4>Endereço</h4>
+          <p class="placeholder">[ADICIONAR: endereço completo]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>Precisa de um orçamento?</h3>
+      <p>Entre em contato agora mesmo e receba atendimento rápido e personalizado para o seu projeto de serralheria.</p>
+      <a href="https://wa.me/5511992801242" class="btn-primary">Chamar no WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="logo">Serralheria <span style="color:var(--laranja);">Corê</span></span>
+  <p>© 2024 Serralheria Corê. Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5511992801242" class="whatsapp-float">💬</a>
+
+<script>
+  document.querySelectorAll('nav ul li a').forEach(link=>{
+    link.addEventListener('click', ()=>{
+      document.getElementById('navMenu').classList.remove('active');
+    });
+  });
+</script>
+
+</body>
+</html>
