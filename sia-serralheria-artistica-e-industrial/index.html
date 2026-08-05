@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sia Serralheria Artística e Industrial</title>
+<style>
+  :root{
+    --preto: #0d0d0f;
+    --preto-2: #161619;
+    --cinza: #2a2a2e;
+    --cinza-claro: #8a8a92;
+    --dourado: #c9a24b;
+    --dourado-claro: #e8c877;
+    --branco: #f7f6f3;
+    --radius: 14px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--preto);
+    color: var(--branco);
+    line-height: 1.6;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== Placeholder tag ===== */
+  .placeholder{
+    display:inline-block;
+    font-size:0.72rem;
+    color:#e05b5b;
+    background:rgba(224,91,91,0.1);
+    border:1px dashed rgba(224,91,91,0.5);
+    padding:2px 8px;
+    border-radius:6px;
+    font-style:italic;
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(13,13,15,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,162,75,0.15);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    font-size:1.15rem;
+    font-weight:800;
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--dourado);}
+  .nav-links{
+    display:none;
+    gap:32px;
+    font-size:0.95rem;
+    font-weight:500;
+  }
+  .nav-links a{
+    opacity:0.85;
+    transition:opacity .25s, color .25s;
+    position:relative;
+  }
+  .nav-links a:hover{opacity:1;color:var(--dourado-claro);}
+  .nav-cta{
+    background:linear-gradient(135deg,var(--dourado),var(--dourado-claro));
+    color:var(--preto);
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:transform .25s, box-shadow .25s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(201,162,75,0.35);
+  }
+
+  @media(min-width:900px){
+    .nav-links{display:flex;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(201,162,75,0.15), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(201,162,75,0.1), transparent 50%),
+      linear-gradient(160deg, #0d0d0f 0%, #1a1a1d 55%, #0d0d0f 100%);
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px);
+    pointer-events:none;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    max-width:760px;
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(201,162,75,0.12);
+    border:1px solid rgba(201,162,75,0.35);
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--dourado-claro);
+    width:fit-content;
+  }
+  .badge .stars{color:#ffd76a;letter-spacing:2px;}
+
+  .hero h1{
+    font-size:clamp(2.4rem, 8vw, 4.6rem);
+    font-weight:900;
+    line-height:1.05;
+    letter-spacing:-1px;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(135deg,var(--dourado),var(--dourado-claro));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero p.sub{
+    font-size:1.1rem;
+    color:var(--cinza-claro);
+    max-width:560px;
+  }
+
+  .hero-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-top:12px;
+  }
+
+  .btn-primary{
+    background:linear-gradient(135deg,var(--dourado),var(--dourado-claro));
+    color:var(--preto);
+    padding:16px 32px;
+    border-radius:100px;
+    font-weight:800;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 12px 28px rgba(201,162,75,0.4);
+  }
+
+  .btn-secondary{
+    border:1px solid rgba(247,246,243,0.3);
+    color:var(--branco);
+    padding:16px 32px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:1rem;
+    transition:background .3s, border-color .3s, transform .3s;
+  }
+  .btn-secondary:hover{
+    background:rgba(247,246,243,0.08);
+    border-color:var(--dourado);
+    transform:translateY(-3px);
+  }
+
+  .hero-visual{
+    position:absolute;
+    right:-10%;
+    top:50%;
+    transform:translateY(-50%);
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    background:conic-gradient(from 180deg, rgba(201,162,75,0.25), transparent 60%);
+    filter:blur(10px);
+    opacity:0.6;
+    z-index:1;
+  }
+
+  /* ===== Sections generic ===== */
+  section{
+    padding:90px 0;
+    position:relative;
+  }
+  .section-label{
+    font-size:0.85rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--dourado);
+    margin-bottom:12px;
+  }
+  .section-title{
+    font-size:clamp(1.8rem,5vw,2.8rem);
+    font-weight:900;
+    margin-bottom:20px;
+    letter-spacing:-0.5px;
+  }
+
+  /* ===== Sobre ===== */
+  .sobre{
+    background:var(--preto-2);
+    border-top:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .sobre-grid{
+    display:grid;
+    gap:40px;
+    grid-template-columns:1fr;
+  }
+  .sobre-text{
+    color:var(--cinza-claro);
+    font-size:1.05rem;
+    max-width:680px;
+  }
+  .sobre-stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    margin-top:32px;
+  }
+  .stat-card{
+    background:var(--preto);
+    border:1px solid rgba(201,162,75,0.2);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    flex:1 1 160px;
+    transition:transform .3s, border-color .3s;
+  }
+  .stat-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--dourado);
+  }
+  .stat-card .num{
+    font-size:1.9rem;
+    font-weight:900;
+    color:var(--dourado-claro);
+  }
+  .stat-card .lbl{
+    font-size:0.85rem;
+    color:var(--cinza-claro);
+    margin-top:4px;
+  }
+
+  /* ===== Serviços ===== */
+  .servicos-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media(min-width:700px){
+    .servicos-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(min-width:1000px){
+    .servicos-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  .servico-card{
+    background:linear-gradient(160deg, var(--preto-2), var(--preto));
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:var(--radius);
+    padding:32px 26px;
+    transition:transform .35s, border-color .35s, box-shadow .35s;
+    position:relative;
+    overflow:hidden;
+  }
+  .servico-card::after{
+    content:"";
+    position:absolute;
+    top:-40%;left:-40%;
+    width:180%;height:180%;
+    background:radial-gradient(circle, rgba(201,162,75,0.08), transparent 60%);
+    opacity:0;
+    transition:opacity .35s;
+  }
+  .servico-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(201,162,75,0.5);
+    box-shadow:0 16px 34px rgba(0,0,0,0.4);
+  }
+  .servico-card:hover::after{opacity:1;}
+  .servico-icon{
+    font-size:1.8rem;
+    margin-bottom:16px;
+    color:var(--dourado-claro);
+  }
+  .servico-card h3{
+    font-size:1.2rem;
+    margin-bottom:10px;
+    font-weight:800;
+  }
+  .servico-card p{
+    color:var(--cinza-claro);
+    font-size:0.95rem;
+  }
+
+  /* ===== Avaliações ===== */
+  .avaliacoes{
+    background:var(--preto-2);
+    text-align:center;
+  }
+  .avaliacoes .stars-big{
+    font-size:2.2rem;
+    color:#ffd76a;
+    letter-spacing:6px;
+    margin-bottom:14px;
+  }
+  .avaliacoes .nota{
+    font-size:3rem;
+    font-weight:900;
+    color:var(--branco);
+  }
+  .avaliacoes .qtd{
+    color:var(--cinza-claro);
+    font-size:1.05rem;
+    margin-top:6px;
+  }
+
+  /* ===== CTA final ===== */
+  .cta-final{
+    background:linear-gradient(135deg, #1a1a1d, #0d0d0f);
+    text-align:center;
+    position:relative;
+  }
+  .cta-final h2{
+    font-size:clamp(2rem,6vw,3.2rem);
+    font-weight:900;
+    margin-bottom:20px;
+  }
+  .cta-final .accent{color:var(--dourado-claro);}
+  .cta-final p{
+    color:var(--cinza-claro);
+    max-width:520px;
+    margin:0 auto 32px;
+    font-size:1.05rem;
+  }
+  .cta-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--preto);
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding:50px 0 30px;
+  }
+  .footer-grid{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    align-items:flex-start;
+  }
+  @media(min-width:700px){
+    .footer-grid{
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:flex-start;
+    }
+  }
+  .footer-brand{
+    font-size:1.2rem;
+    font-weight:900;
+  }
+  .footer-brand span{color:var(--dourado);}
+  .footer-contact{
+    color:var(--cinza-claro);
+    font-size:0.95rem;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .footer-contact a{
+    transition:color .25s;
+  }
+  .footer-contact a:hover{color:var(--dourado-claro);}
+  .footer-bottom{
+    margin-top:36px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    font-size:0.82rem;
+    color:#6a6a70;
+    text-align:center;
+  }
+
+  /* whatsapp float */
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    background:#25D366;
+    color:#fff;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.6rem;
+    box-shadow:0 8px 20px rgba(37,211,102,0.4);
+    z-index:200;
+    transition:transform .3s;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">SIA <span>Serralheria</span></div>
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/551195345643" target="_blank">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-visual"></div>
+  <div class="container hero-content">
+    <div class="badge"><span class="stars">★★★★★</span> 5.0 · 24 avaliações no Google</div>
+    <h1>Serralheria Artística <span class="accent">& Industrial</span> de Alto Padrão</h1>
+    <p class="sub">Estrutura, precisão e acabamento em cada peça. A Sia transforma metal em soluções feitas sob medida para quem exige excelência.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="https://wa.me/551195345643" target="_blank">💬 Solicitar Orçamento</a>
+      <a class="btn-secondary" href="tel:+551195345643">📞 (11) 95345-6434</a>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="container sobre-grid">
+    <div>
+      <div class="section-label">Sobre a Sia</div>
+      <h2 class="section-title">Tradição e precisão em cada projeto</h2>
+      <p class="sobre-text">
+        <span class="placeholder">[ADICIONAR: texto institucional sobre a empresa]</span>
+        A Sia Serralheria Artística e Industrial atua com dedicação em
+        <span class="placeholder">[ADICIONAR: categoria/segmento de atuação]</span>,
+        atendendo clientes em <span class="placeholder">[ADICIONAR: cidade]</span>.
+      </p>
+      <div class="sobre-stats">
+        <div class="stat-card">
+          <div class="num">5.0★</div>
+          <div class="lbl">Avaliação Google</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">24</div>
+          <div class="lbl">Avaliações de clientes</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">100%</div>
+          <div class="lbl">Feito sob medida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <div class="section-label">Nossos Serviços</div>
+    <h2 class="section-title">Soluções em metal, sob medida</h2>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-icon">🛠️</div>
+        <h3><span class="placeholder">[ADICIONAR: serviço 1]</span></h3>
+        <p>Descrição detalhada do serviço a ser adicionada pelo cliente.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">⚙️</div>
+        <h3><span class="placeholder">[ADICIONAR: serviço 2]</span></h3>
+        <p>Descrição detalhada do serviço a ser adicionada pelo cliente.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🔩</div>
+        <h3><span class="placeholder">[ADICIONAR: serviço 3]</span></h3>
+        <p>Descrição detalhada do serviço a ser adicionada pelo cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avaliacoes" id="avaliacoes">
+  <div class="container">
+    <div class="section-label">Reputação</div>
+    <div class="stars-big">★★★★★</div>
+    <div class="nota">5.0</div>
+    <div class="qtd">baseado em 24 avaliações no Google</div>
+  </div>
+</section>
+
+<section class="cta-final" id="contato">
+  <div class="container">
+    <h2>Pronto para dar <span class="accent">forma ao seu projeto?</span></h2>
+    <p>Entre em contato agora mesmo e receba um atendimento personalizado da Sia Serralheria.</p>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="https://wa.me/551195345643" target="_blank">💬 Chamar no WhatsApp</a>
+      <a class="btn-secondary" href="tel:+551195345643">📞 Ligar agora</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">SIA <span>Serralheria</span></div>
+      <p style="color:var(--cinza-claro); font-size:0.85rem; margin-top:8px;">
+        Artística e Industrial — precisão em cada detalhe.
+      </p>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:+551195345643">📞 (11) 95345-6434</a>
+      <a href="https://wa.me/551195345643" target="_blank">💬 WhatsApp: (11) 95345-6434</a>
+      <span class="placeholder">[ADICIONAR: endereço completo]</span>
+      <span class="placeholder">[ADICIONAR: cidade/UF]</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 Sia Serralheria Artística e Industrial. Todos os direitos reservados.
+    <span class="placeholder">[ADICIONAR: cores oficiais da marca]</span>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/551195345643" target="_blank" aria-label="WhatsApp">💬</a>
+
+</body>
+</html>
