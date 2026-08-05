@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serralheria Avante</title>
+<style>
+  :root{
+    --preto: #0d0d0f;
+    --preto2: #17171b;
+    --dourado: #d9a441;
+    --dourado-claro: #f2c76b;
+    --branco: #f5f4f1;
+    --cinza: #9a9a9f;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:var(--preto);
+    color:var(--branco);
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 5%;
+    background:rgba(13,13,15,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(217,164,65,0.15);
+  }
+
+  .logo{
+    font-size:1.4rem;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .logo span{color:var(--dourado);}
+
+  .header-cta{
+    display:flex;
+    gap:12px;
+  }
+
+  .btn-mini{
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:0.85rem;
+    font-weight:600;
+    border:1px solid var(--dourado);
+    color:var(--dourado);
+    transition:all .3s ease;
+  }
+  .btn-mini:hover{
+    background:var(--dourado);
+    color:var(--preto);
+    transform:translateY(-2px);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:140px 6% 80px;
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(217,164,65,0.15), transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(217,164,65,0.1), transparent 60%),
+      linear-gradient(160deg, #0d0d0f 0%, #17171b 50%, #0d0d0f 100%);
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 40px);
+    pointer-events:none;
+  }
+
+  .badge-avaliacao{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(217,164,65,0.1);
+    border:1px solid rgba(217,164,65,0.4);
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:0.9rem;
+    margin-bottom:28px;
+    animation:fadeInUp 1s ease both;
+  }
+  .badge-avaliacao .estrelas{color:var(--dourado-claro);letter-spacing:2px;}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.2rem);
+    font-weight:900;
+    line-height:1.05;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    max-width:900px;
+    animation:fadeInUp 1.1s ease both;
+  }
+  .hero h1 .destaque{
+    color:var(--dourado);
+    display:block;
+    background:linear-gradient(90deg, var(--dourado), var(--dourado-claro));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero p.sub{
+    margin-top:22px;
+    font-size:clamp(1rem, 2vw, 1.25rem);
+    color:var(--cinza);
+    max-width:600px;
+    animation:fadeInUp 1.3s ease both;
+  }
+
+  .hero-ctas{
+    margin-top:42px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+    animation:fadeInUp 1.5s ease both;
+  }
+
+  .btn-primario, .btn-secundario{
+    padding:16px 34px;
+    font-size:1rem;
+    font-weight:700;
+    border-radius:40px;
+    transition:all .35s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .btn-primario{
+    background:linear-gradient(135deg, var(--dourado), var(--dourado-claro));
+    color:var(--preto);
+    box-shadow:0 10px 30px rgba(217,164,65,0.3);
+  }
+  .btn-primario:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 14px 40px rgba(217,164,65,0.45);
+  }
+
+  .btn-secundario{
+    border:1px solid rgba(255,255,255,0.25);
+    color:var(--branco);
+  }
+  .btn-secundario:hover{
+    background:rgba(255,255,255,0.08);
+    transform:translateY(-4px);
+  }
+
+  @keyframes fadeInUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ===== SECAO GERAL ===== */
+  section{
+    padding:110px 6%;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .titulo-secao{
+    text-align:center;
+    margin-bottom:60px;
+  }
+  .titulo-secao .tag{
+    color:var(--dourado);
+    font-size:0.85rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:700;
+    display:block;
+    margin-bottom:14px;
+  }
+  .titulo-secao h2{
+    font-size:clamp(2rem, 4vw, 3rem);
+    font-weight:900;
+    text-transform:uppercase;
+  }
+
+  /* ===== SOBRE ===== */
+  .sobre-box{
+    background:var(--preto2);
+    border:1px solid rgba(217,164,65,0.15);
+    border-radius:20px;
+    padding:50px 40px;
+    text-align:center;
+    max-width:800px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+    transition:transform .4s ease;
+  }
+  .sobre-box:hover{transform:translateY(-6px);}
+  .sobre-box p{
+    font-size:1.1rem;
+    color:var(--cinza);
+    line-height:1.7;
+  }
+  .placeholder{
+    color:#7a6a45;
+    font-style:italic;
+    font-size:0.95rem;
+  }
+
+  /* ===== SERVICOS ===== */
+  .servicos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:26px;
+  }
+  .servico-card{
+    background:var(--preto2);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:40px 28px;
+    text-align:center;
+    transition:all .4s ease;
+    position:relative;
+  }
+  .servico-card:hover{
+    border-color:var(--dourado);
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  }
+  .servico-card .icone{
+    font-size:2.2rem;
+    margin-bottom:16px;
+    color:var(--dourado);
+  }
+  .servico-card h3{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .servico-card p{
+    color:var(--cinza);
+    font-size:0.92rem;
+  }
+
+  /* ===== AVALIACAO DESTAQUE ===== */
+  .avaliacao-full{
+    text-align:center;
+    background:linear-gradient(135deg, rgba(217,164,65,0.12), rgba(217,164,65,0.02));
+    border-radius:24px;
+    padding:70px 30px;
+    border:1px solid rgba(217,164,65,0.25);
+  }
+  .avaliacao-full .nota{
+    font-size:clamp(3rem,8vw,5rem);
+    font-weight:900;
+    color:var(--dourado-claro);
+    line-height:1;
+  }
+  .avaliacao-full .estrelas{
+    font-size:1.6rem;
+    color:var(--dourado);
+    margin:14px 0;
+    letter-spacing:6px;
+  }
+  .avaliacao-full p{
+    color:var(--cinza);
+    font-size:1.05rem;
+  }
+
+  /* ===== CONTATO ===== */
+  .contato-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+  @media(max-width:768px){
+    .contato-grid{grid-template-columns:1fr;}
+  }
+  .contato-card{
+    background:var(--preto2);
+    border-radius:18px;
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:.35s ease;
+  }
+  .contato-card:hover{
+    border-color:var(--dourado);
+  }
+  .contato-card h3{
+    color:var(--dourado);
+    text-transform:uppercase;
+    font-size:0.9rem;
+    letter-spacing:2px;
+    margin-bottom:14px;
+  }
+  .contato-card p{
+    font-size:1.3rem;
+    font-weight:700;
+  }
+
+  /* ===== CTA FINAL ===== */
+  .cta-final{
+    text-align:center;
+    padding:100px 6%;
+    background:linear-gradient(160deg, #17171b, #0d0d0f);
+    border-top:1px solid rgba(217,164,65,0.15);
+  }
+  .cta-final h2{
+    font-size:clamp(1.8rem,5vw,3rem);
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .cta-final p{
+    color:var(--cinza);
+    margin-bottom:36px;
+    font-size:1.05rem;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px;
+    color:var(--cinza);
+    font-size:0.85rem;
+    border-top:1px solid rgba(255,255,255,0.05);
+  }
+  footer span{color:var(--dourado);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Serralheria <span>Avante</span></div>
+  <div class="header-cta">
+    <a class="btn-mini" href="tel:+5511994353796">Ligar</a>
+    <a class="btn-mini" href="https://wa.me/5511994353796" target="_blank">WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="badge-avaliacao">
+    <span class="estrelas">★★★★★</span>
+    <span>5.0 — 52 avaliações no Google</span>
+  </div>
+  <h1>Força e precisão em<span class="destaque">cada estrutura metálica</span></h1>
+  <p class="sub">Qualidade reconhecida por dezenas de clientes satisfeitos. Solicite seu atendimento agora mesmo.</p>
+  <div class="hero-ctas">
+    <a class="btn-primario" href="https://wa.me/5511994353796" target="_blank">💬 Falar no WhatsApp</a>
+    <a class="btn-secundario" href="tel:+5511994353796">📞 (11) 99435-3796</a>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="titulo-secao">
+    <span class="tag">Quem somos</span>
+    <h2>Sobre a Avante</h2>
+  </div>
+  <div class="sobre-box">
+    <p class="placeholder">[ADICIONAR: descrição sobre a empresa, história e diferenciais]</p>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="titulo-secao">
+    <span class="tag">O que fazemos</span>
+    <h2>Nossos Serviços</h2>
+  </div>
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="icone">🛠️</div>
+      <h3 class="placeholder">[ADICIONAR: serviço 1]</h3>
+      <p>[ADICIONAR: descrição breve do serviço]</p>
+    </div>
+    <div class="servico-card">
+      <div class="icone">🔧</div>
+      <h3 class="placeholder">[ADICIONAR: serviço 2]</h3>
+      <p>[ADICIONAR: descrição breve do serviço]</p>
+    </div>
+    <div class="servico-card">
+      <div class="icone">⚙️</div>
+      <h3 class="placeholder">[ADICIONAR: serviço 3]</h3>
+      <p>[ADICIONAR: descrição breve do serviço]</p>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes">
+  <div class="avaliacao-full">
+    <div class="nota">5.0</div>
+    <div class="estrelas">★★★★★</div>
+    <p>Com base em 52 avaliações reais de clientes no Google</p>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="titulo-secao">
+    <span class="tag">Fale com a gente</span>
+    <h2>Contato</h2>
+  </div>
+  <div class="contato-grid">
+    <div class="contato-card">
+      <h3>Telefone</h3>
+      <p><a href="tel:+5511994353796">(11) 99435-3796</a></p>
+    </div>
+    <div class="contato-card">
+      <h3>WhatsApp</h3>
+      <p><a href="https://wa.me/5511994353796" target="_blank">(11) 99435-3796</a></p>
+    </div>
+    <div class="contato-card">
+      <h3>Endereço</h3>
+      <p class="placeholder">[ADICIONAR: endereço completo]</p>
+    </div>
+    <div class="contato-card">
+      <h3>Localização / Cidade</h3>
+      <p class="placeholder">[ADICIONAR: cidade e região de atendimento]</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final">
+  <h2>Pronto para dar vida ao seu projeto?</h2>
+  <p>Entre em contato agora e receba um atendimento rápido e especializado.</p>
+  <a class="btn-primario" href="https://wa.me/5511994353796" target="_blank">💬 Solicitar Orçamento</a>
+</div>
+
+<footer>
+  © 2024 Serralheria <span>Avante</span>. Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
