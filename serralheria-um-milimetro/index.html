@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Serralheria Um Milímetro | Precisão que você pode confiar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Serralheria Um Milímetro</title>
 <style>
   :root{
     --preto: #0d0d0f;
-    --preto2: #161619;
-    --grafite: #24242a;
-    --ambar: #ff8a1e;
-    --ambar-forte: #ff5e0e;
-    --branco: #f5f5f2;
-    --cinza: #9a9aa3;
+    --preto-claro: #1a1a1e;
+    --dourado: #d4a94e;
+    --dourado-claro: #f0ce8a;
+    --cinza: #8a8a92;
+    --branco: #f7f6f3;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -22,20 +19,13 @@
   html{scroll-behavior:smooth;}
 
   body{
-    font-family:'Inter', sans-serif;
+    font-family:'Helvetica Neue', Arial, sans-serif;
     background:var(--preto);
     color:var(--branco);
     overflow-x:hidden;
   }
 
-  h1,h2,h3,h4{
-    font-family:'Poppins', sans-serif;
-    font-weight:800;
-    letter-spacing:-0.02em;
-  }
-
   a{text-decoration:none;color:inherit;}
-  ul{list-style:none;}
 
   .container{
     max-width:1180px;
@@ -50,206 +40,176 @@
     z-index:100;
     background:rgba(13,13,15,0.85);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    border-bottom:1px solid rgba(212,169,78,0.15);
   }
-  .nav{
+  .header-inner{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:16px 24px;
+    padding:18px 24px;
     max-width:1180px;
     margin:0 auto;
   }
   .logo{
-    font-family:'Poppins',sans-serif;
-    font-weight:800;
     font-size:1.15rem;
-    display:flex;
-    align-items:center;
-    gap:10px;
+    font-weight:800;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
   }
-  .logo span{color:var(--ambar);}
-  .nav-cta{
-    display:flex;
-    gap:12px;
-    align-items:center;
+  .logo span{color:var(--dourado);}
+  .header-cta{
+    background:var(--dourado);
+    color:var(--preto);
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:0.9rem;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:12px 22px;
-    border-radius:50px;
-    font-weight:600;
-    font-size:0.92rem;
-    transition:all .3s ease;
-    border:2px solid transparent;
-    cursor:pointer;
+  .header-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(212,169,78,0.35);
   }
-  .btn-primary{
-    background:linear-gradient(135deg,var(--ambar),var(--ambar-forte));
-    color:#111;
-    box-shadow:0 8px 20px rgba(255,94,14,0.35);
-  }
-  .btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 14px 28px rgba(255,94,14,0.5);
-  }
-  .btn-outline{
-    border:2px solid rgba(255,255,255,0.25);
-    color:var(--branco);
-  }
-  .btn-outline:hover{
-    border-color:var(--ambar);
-    color:var(--ambar);
-    transform:translateY(-3px);
-  }
-  .btn-tel-header{display:none;}
 
   /* ===== HERO ===== */
   .hero{
-    position:relative;
     min-height:100vh;
     display:flex;
     align-items:center;
+    position:relative;
     padding:140px 0 100px;
     background:
-      radial-gradient(circle at 15% 20%, rgba(255,94,14,0.18), transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(255,138,30,0.12), transparent 40%),
-      linear-gradient(160deg, var(--preto) 0%, var(--preto2) 45%, var(--grafite) 100%);
+      radial-gradient(circle at 15% 20%, rgba(212,169,78,0.18), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(212,169,78,0.12), transparent 50%),
+      linear-gradient(160deg, #0d0d0f 0%, #171719 45%, #0d0d0f 100%);
     overflow:hidden;
   }
   .hero::before{
-    content:"";
+    content:'';
     position:absolute;
-    inset:0;
-    background-image:
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 40px);
+    top:-20%;
+    right:-15%;
+    width:60%;
+    height:140%;
+    background:
+      repeating-linear-gradient(45deg, rgba(212,169,78,0.05) 0 2px, transparent 2px 40px);
+    transform:rotate(8deg);
     pointer-events:none;
   }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:50px;
-    align-items:center;
+  .hero-content{
     position:relative;
     z-index:2;
+    max-width:720px;
   }
-  .badge-rating{
+  .hero-badge{
     display:inline-flex;
     align-items:center;
-    gap:10px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.12);
-    padding:9px 18px;
-    border-radius:50px;
-    font-size:0.88rem;
+    gap:8px;
+    background:rgba(212,169,78,0.12);
+    border:1px solid rgba(212,169,78,0.4);
+    color:var(--dourado-claro);
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:0.82rem;
+    font-weight:600;
     margin-bottom:26px;
-    color:var(--branco);
+    letter-spacing:0.3px;
   }
-  .badge-rating .stars{color:var(--ambar);font-size:1rem;letter-spacing:2px;}
   .hero h1{
-    font-size:clamp(2.4rem, 5.2vw, 4.2rem);
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
     line-height:1.05;
+    font-weight:800;
+    letter-spacing:-1px;
     margin-bottom:22px;
   }
   .hero h1 em{
     font-style:normal;
-    background:linear-gradient(135deg,var(--ambar),var(--ambar-forte));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    color:var(--dourado);
+    display:block;
   }
   .hero p.lead{
     font-size:1.15rem;
     color:var(--cinza);
     max-width:520px;
-    margin-bottom:36px;
+    margin-bottom:38px;
     line-height:1.6;
   }
   .hero-actions{
     display:flex;
     gap:16px;
     flex-wrap:wrap;
-    margin-bottom:34px;
   }
-  .hero-mini-info{
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    color:var(--cinza);
-    font-size:0.9rem;
+  .btn-primary{
+    background:var(--dourado);
+    color:var(--preto);
+    padding:16px 34px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .hero-mini-info strong{color:var(--branco);display:block;font-size:1.4rem;font-family:'Poppins',sans-serif;}
+  .btn-primary:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 12px 30px rgba(212,169,78,0.4);
+  }
+  .btn-secondary{
+    border:1px solid rgba(255,255,255,0.25);
+    color:var(--branco);
+    padding:16px 30px;
+    border-radius:40px;
+    font-weight:600;
+    font-size:1rem;
+    transition:all .25s ease;
+  }
+  .btn-secondary:hover{
+    border-color:var(--dourado);
+    color:var(--dourado);
+  }
 
-  .hero-visual{
-    position:relative;
-    height:460px;
-    border-radius:26px;
-    background:
-      linear-gradient(160deg, rgba(255,138,30,0.15), rgba(255,94,14,0.05)),
-      linear-gradient(135deg, #1a1a1e, #2b2b30);
-    border:1px solid rgba(255,255,255,0.08);
-    overflow:hidden;
+  .hero-rating{
+    margin-top:44px;
     display:flex;
     align-items:center;
-    justify-content:center;
+    gap:14px;
   }
-  .hero-visual::before{
-    content:"✦";
-    position:absolute;
-    font-size:14rem;
-    color:rgba(255,138,30,0.08);
-    transform:rotate(15deg);
+  .stars{
+    color:var(--dourado);
+    font-size:1.2rem;
+    letter-spacing:2px;
   }
-  .hero-visual .glyph{
-    font-size:6.5rem;
-    z-index:2;
-    filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-  }
-  .spark{
-    position:absolute;
-    width:6px;height:6px;
-    background:var(--ambar);
-    border-radius:50%;
-    box-shadow:0 0 12px 4px rgba(255,138,30,0.6);
-    animation:float 4s ease-in-out infinite;
-  }
-  .spark:nth-child(2){top:20%;left:15%;animation-delay:0s;}
-  .spark:nth-child(3){top:70%;left:75%;animation-delay:1.4s;}
-  .spark:nth-child(4){top:40%;left:80%;animation-delay:2.6s;}
-  @keyframes float{
-    0%,100%{transform:translateY(0) scale(1);opacity:0.4;}
-    50%{transform:translateY(-30px) scale(1.4);opacity:1;}
+  .hero-rating small{
+    color:var(--cinza);
+    font-size:0.88rem;
   }
 
-  /* ===== SECTION GERAL ===== */
-  section{padding:100px 0;}
-  .section-tag{
-    color:var(--ambar);
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.14em;
-    font-size:0.82rem;
-    margin-bottom:14px;
-    display:block;
-  }
+  /* ===== SECTION TITLE ===== */
   .section-title{
-    font-size:clamp(1.8rem, 3.4vw, 2.7rem);
-    margin-bottom:22px;
+    text-align:center;
+    margin-bottom:60px;
   }
-  .section-desc{
-    color:var(--cinza);
-    max-width:640px;
-    font-size:1.05rem;
-    line-height:1.7;
+  .section-title .tag{
+    color:var(--dourado);
+    font-weight:700;
+    letter-spacing:2px;
+    font-size:0.8rem;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:14px;
+  }
+  .section-title h2{
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+    font-weight:800;
+    letter-spacing:-0.5px;
   }
 
   /* ===== SOBRE ===== */
   .sobre{
-    background:var(--preto2);
-    border-top:1px solid rgba(255,255,255,0.05);
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    padding:110px 0;
+    background:var(--preto-claro);
+    position:relative;
   }
   .sobre-grid{
     display:grid;
@@ -257,335 +217,330 @@
     gap:60px;
     align-items:center;
   }
-  .sobre-card{
-    background:linear-gradient(145deg, var(--grafite), #1b1b1f);
-    border-radius:22px;
-    padding:40px;
-    border:1px solid rgba(255,255,255,0.06);
-    position:relative;
+  .sobre-visual{
+    height:380px;
+    border-radius:20px;
+    background:
+      linear-gradient(135deg, rgba(212,169,78,0.25), rgba(212,169,78,0.05)),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 3px, transparent 3px 22px);
+    border:1px solid rgba(212,169,78,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:5rem;
+    color:rgba(212,169,78,0.5);
   }
-  .sobre-card .placeholder{
+  .sobre-texto h2{
+    font-size:2.2rem;
+    font-weight:800;
+    margin-bottom:22px;
+    letter-spacing:-0.5px;
+  }
+  .sobre-texto p{
     color:var(--cinza);
-    font-size:0.85rem;
-    font-style:italic;
-    opacity:0.75;
-    display:block;
-    margin-top:10px;
+    font-size:1.05rem;
+    line-height:1.75;
+    margin-bottom:18px;
   }
-  .mini-stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:36px;
-  }
-  .mini-stat{
-    text-align:center;
-    padding:22px 10px;
-    background:rgba(255,255,255,0.04);
-    border-radius:16px;
-    border:1px solid rgba(255,255,255,0.06);
-    transition:.3s;
-  }
-  .mini-stat:hover{
-    transform:translateY(-6px);
-    border-color:var(--ambar);
-  }
-  .mini-stat strong{
-    display:block;
-    font-family:'Poppins',sans-serif;
-    font-size:1.6rem;
-    color:var(--ambar);
-  }
-  .mini-stat span{
-    font-size:0.78rem;
-    color:var(--cinza);
+  .placeholder-tag{
+    display:inline-block;
+    background:rgba(255,255,255,0.06);
+    border:1px dashed rgba(212,169,78,0.4);
+    color:var(--dourado-claro);
+    font-size:0.82rem;
+    padding:6px 14px;
+    border-radius:8px;
   }
 
-  /* ===== SERVIÇOS ===== */
+  /* ===== SERVICOS ===== */
+  .servicos{
+    padding:110px 0;
+  }
   .servicos-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:28px;
-    margin-top:50px;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:26px;
   }
   .servico-card{
-    background:linear-gradient(150deg, var(--preto2), var(--grafite));
+    background:var(--preto-claro);
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:20px;
-    padding:36px 30px;
-    transition:all .35s ease;
-    position:relative;
-    overflow:hidden;
-  }
-  .servico-card::after{
-    content:"";
-    position:absolute;
-    top:-40%;left:-40%;
-    width:180%;height:180%;
-    background:radial-gradient(circle, rgba(255,138,30,0.12), transparent 60%);
-    opacity:0;
-    transition:opacity .4s;
+    border-radius:18px;
+    padding:36px 28px;
+    transition:transform .3s ease, border-color .3s ease, background .3s ease;
   }
   .servico-card:hover{
-    transform:translateY(-10px);
-    border-color:var(--ambar);
-    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    transform:translateY(-8px);
+    border-color:rgba(212,169,78,0.5);
+    background:#1f1f23;
   }
-  .servico-card:hover::after{opacity:1;}
-  .servico-card .icon{
-    font-size:2.2rem;
-    margin-bottom:18px;
-    display:inline-block;
+  .servico-icon{
+    width:52px;height:52px;
+    border-radius:14px;
+    background:rgba(212,169,78,0.15);
+    color:var(--dourado);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:22px;
   }
   .servico-card h3{
     font-size:1.15rem;
     margin-bottom:10px;
-    position:relative;
-    z-index:2;
+    font-weight:700;
   }
   .servico-card p{
     color:var(--cinza);
-    font-size:0.92rem;
+    font-size:0.95rem;
     line-height:1.6;
-    position:relative;
-    z-index:2;
-  }
-  .servico-card .tag-placeholder{
-    display:inline-block;
-    margin-top:14px;
-    font-size:0.72rem;
-    color:var(--ambar);
-    opacity:0.7;
-    font-style:italic;
   }
 
-  /* ===== AVALIAÇÕES ===== */
-  .avaliacoes{
-    background:linear-gradient(135deg, #14100b, #1c1610);
+  /* ===== AVALIACAO ===== */
+  .avaliacao{
+    padding:90px 0;
+    background:linear-gradient(135deg, rgba(212,169,78,0.08), transparent);
+    border-top:1px solid rgba(212,169,78,0.15);
+    border-bottom:1px solid rgba(212,169,78,0.15);
+  }
+  .avaliacao-box{
+    max-width:700px;
+    margin:0 auto;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,0.05);
-    border-bottom:1px solid rgba(255,255,255,0.05);
   }
-  .rating-box{
-    display:inline-flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-    padding:50px 60px;
-    border-radius:24px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,138,30,0.25);
+  .avaliacao-box .stars{font-size:2rem;}
+  .avaliacao-box h3{
+    font-size:2.4rem;
+    font-weight:800;
+    margin:16px 0 8px;
   }
-  .rating-box .big-number{
-    font-family:'Poppins',sans-serif;
-    font-size:4rem;
-    font-weight:900;
-    color:var(--ambar);
-    line-height:1;
-  }
-  .rating-box .stars-big{
-    color:var(--ambar);
-    font-size:1.6rem;
-    letter-spacing:6px;
-  }
-  .rating-box p{
+  .avaliacao-box p{
     color:var(--cinza);
-    margin-top:6px;
+    font-size:1.05rem;
   }
 
   /* ===== CONTATO ===== */
   .contato{
-    background:var(--preto2);
+    padding:110px 0 130px;
   }
-  .contato-grid{
+  .contato-box{
+    background:var(--preto-claro);
+    border-radius:26px;
+    padding:60px;
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.2fr 1fr;
     gap:50px;
+    align-items:center;
+    border:1px solid rgba(212,169,78,0.2);
+    position:relative;
+    overflow:hidden;
   }
-  .contato-info-card{
-    background:linear-gradient(150deg, var(--grafite), #1a1a1e);
-    border-radius:22px;
-    padding:44px;
-    border:1px solid rgba(255,255,255,0.06);
+  .contato-box::after{
+    content:'';
+    position:absolute;
+    right:-100px;top:-100px;
+    width:260px;height:260px;
+    background:radial-gradient(circle, rgba(212,169,78,0.25), transparent 70%);
+  }
+  .contato-texto h2{
+    font-size:2.2rem;
+    font-weight:800;
+    margin-bottom:18px;
+    letter-spacing:-0.5px;
+  }
+  .contato-texto p{
+    color:var(--cinza);
+    font-size:1.05rem;
+    line-height:1.7;
+    margin-bottom:10px;
+  }
+  .contato-info{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
   }
   .contato-item{
     display:flex;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:26px;
-  }
-  .contato-item .ic{
-    width:46px;height:46px;
-    border-radius:12px;
-    background:rgba(255,138,30,0.12);
-    display:flex;
     align-items:center;
-    justify-content:center;
-    font-size:1.3rem;
-    color:var(--ambar);
+    gap:16px;
+    background:rgba(255,255,255,0.03);
+    padding:18px 22px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .contato-item .icon{
+    width:42px;height:42px;
+    border-radius:10px;
+    background:var(--dourado);
+    color:var(--preto);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;
     flex-shrink:0;
   }
-  .contato-item h4{
-    font-size:1rem;
-    margin-bottom:4px;
-  }
-  .contato-item p{
+  .contato-item strong{
+    display:block;
+    font-size:0.78rem;
     color:var(--cinza);
-    font-size:0.95rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:2px;
   }
-  .contato-item .placeholder-text{
-    color:#b98c4f;
-    font-style:italic;
-    font-size:0.85rem;
-  }
-  .mapa-box{
-    border-radius:22px;
-    background:repeating-linear-gradient(135deg, #1a1a1e, #1a1a1e 20px, #201f22 20px, #201f22 40px);
-    border:1px solid rgba(255,255,255,0.06);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:340px;
-    flex-direction:column;
-    gap:14px;
-    color:var(--cinza);
-    font-size:0.95rem;
-    text-align:center;
-    padding:30px;
-  }
-  .mapa-box span{font-size:2.4rem;}
-
-  .cta-final{
-    display:flex;
-    gap:16px;
-    margin-top:32px;
-    flex-wrap:wrap;
+  .contato-item span{
+    font-size:1.05rem;
+    font-weight:600;
   }
 
   /* ===== FOOTER ===== */
   footer{
-    background:var(--preto);
-    padding:40px 0;
-    border-top:1px solid rgba(255,255,255,0.06);
+    background:#0a0a0b;
+    padding:36px 0;
     text-align:center;
     color:var(--cinza);
     font-size:0.85rem;
+    border-top:1px solid rgba(255,255,255,0.06);
   }
-  footer .logo{justify-content:center;margin-bottom:12px;}
+  footer .logo{margin-bottom:10px;}
 
-  /* ===== FLOAT WHATSAPP ===== */
-  .float-whats{
+  /* Whatsapp float */
+  .wa-float{
     position:fixed;
-    bottom:24px;right:24px;
+    bottom:26px;right:26px;
     background:#25D366;
-    color:#0d0d0f;
+    color:#fff;
     width:60px;height:60px;
     border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex;align-items:center;justify-content:center;
     font-size:1.7rem;
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
     z-index:200;
-    transition:transform .3s;
+    transition:transform .25s ease;
   }
-  .float-whats:hover{transform:scale(1.1);}
+  .wa-float:hover{transform:scale(1.1);}
 
-  /* ===== RESPONSIVO ===== */
-  @media (max-width: 900px){
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{height:300px;order:-1;}
-    .sobre-grid{grid-template-columns:1fr;}
-    .servicos-grid{grid-template-columns:1fr 1fr;}
-    .contato-grid{grid-template-columns:1fr;}
-    .nav-cta .btn-outline{display:none;}
-  }
-  @media (max-width: 560px){
-    .servicos-grid{grid-template-columns:1fr;}
-    .mini-stats{grid-template-columns:1fr;}
-    .hero{padding-top:120px;}
-    .rating-box{padding:36px 30px;}
-    .hero-mini-info{gap:18px;}
+  @media (max-width:860px){
+    .sobre-grid, .contato-box{
+      grid-template-columns:1fr;
+    }
+    .contato-box{padding:36px 24px;}
+    .header-cta{padding:8px 16px;font-size:0.8rem;}
+    .hero{padding:120px 0 80px;}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <nav class="nav">
-    <div class="logo">⚙ <span>Serralheria</span> Um Milímetro</div>
-    <div class="nav-cta">
-      <a href="tel:+5511974142089" class="btn btn-outline">(11) 97414-2089</a>
-      <a href="https://wa.me/5511974142089" class="btn btn-primary" target="_blank">Falar no WhatsApp</a>
-    </div>
-  </nav>
+  <div class="header-inner">
+    <div class="logo">UM <span>MILÍMETRO</span></div>
+    <a href="#contato" class="header-cta">Fale Conosco</a>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="badge-rating">
-        <span class="stars">★★★★★</span>
-        4.8 (41 avaliações no Google)
-      </div>
-      <h1>Precisão de <em>um milímetro</em> em cada peça que sai da nossa oficina.</h1>
-      <p class="lead">Serralheria com atenção ao detalhe, feita para durar. Ligue, mande mensagem e converse direto com quem faz.</p>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-badge">★ 4.8 avaliação Google · 41 avaliações</span>
+      <h1>Precisão que se sente<br><em>até no milímetro.</em></h1>
+      <p class="lead">Serralheria Um Milímetro — soluções em metal com acabamento impecável e atenção a cada detalhe do seu projeto.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/5511974142089" class="btn btn-primary" target="_blank">💬 Solicitar orçamento</a>
-        <a href="tel:+5511974142089" class="btn btn-outline">📞 (11) 97414-2089</a>
+        <a href="https://wa.me/5511974142089" class="btn-primary">📲 Chamar no WhatsApp</a>
+        <a href="#servicos" class="btn-secondary">Ver Serviços</a>
       </div>
-      <div class="hero-mini-info">
-        <div><strong>4.8★</strong> Nota no Google</div>
-        <div><strong>41</strong> Avaliações reais</div>
-        <div><strong>[ADICIONAR:</strong> anos de mercado]</div>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <small>4.8 de 5 · baseado em 41 avaliações no Google</small>
       </div>
-    </div>
-    <div class="hero-visual">
-      <span class="glyph">⚒️</span>
-      <div class="spark"></div>
-      <div class="spark"></div>
-      <div class="spark"></div>
     </div>
   </div>
 </section>
 
 <section class="sobre">
-  <div class="container sobre-grid">
-    <div>
-      <span class="section-tag">Sobre nós</span>
-      <h2 class="section-title">Quem faz, entende do assunto.</h2>
-      <p class="section-desc">
-        A Serralheria Um Milímetro é reconhecida no Google com nota 4.8 e 41 avaliações de clientes.
-        Ainda não temos uma descrição oficial cadastrada — em breve traremos mais detalhes sobre nossa história e trajetória.
-      </p>
-      <div class="mini-stats">
-        <div class="mini-stat">
-          <strong>4.8★</strong>
-          <span>Avaliação Google</span>
-        </div>
-        <div class="mini-stat">
-          <strong>41</strong>
-          <span>Avaliações</span>
-        </div>
-        <div class="mini-stat">
-          <strong>100%</strong>
-          <span>Atendimento local</span>
-        </div>
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-visual">⚒️</div>
+      <div class="sobre-texto">
+        <h2>Sobre a Um Milímetro</h2>
+        <p>Serralheria dedicada a entregar trabalhos com precisão milimétrica e acabamento de qualidade.</p>
+        <p class="placeholder-tag">[ADICIONAR: descrição completa, categoria e cidade de atuação]</p>
       </div>
-    </div>
-    <div class="sobre-card">
-      <h3>📍 Onde estamos</h3>
-      <span class="placeholder">[ADICIONAR: endereço completo]</span>
-      <h3 style="margin-top:26px;">🏙️ Cidade de atendimento</h3>
-      <span class="placeholder">[ADICIONAR: cidade / região atendida]</span>
-      <h3 style="margin-top:26px;">🌐 Site</h3>
-      <span class="placeholder">Sem site cadastrado no Google Maps — fale direto pelo WhatsApp.</span>
     </div>
   </div>
 </section>
 
-<section class="servicos">
+<section class="servicos" id="servicos">
   <div class="container">
-    <span class="section-tag">O que fazemos</span>
-    <h2 class="section-title">Nossos serviços</h2>
-    <p class="section-desc">Ainda não recebemos a lista oficial de serviços desta serralheria. Fale com a equ
+    <div class="section-title">
+      <span class="tag">O que fazemos</span>
+      <h2>Nossos Serviços</h2>
+    </div>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-icon">🔧</div>
+        <h3>[ADICIONAR: serviço 1]</h3>
+        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🛠️</div>
+        <h3>[ADICIONAR: serviço 2]</h3>
+        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">⚙️</div>
+        <h3>[ADICIONAR: serviço 3]</h3>
+        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avaliacao">
+  <div class="container">
+    <div class="avaliacao-box">
+      <span class="stars">★★★★★</span>
+      <h3>4.8 / 5</h3>
+      <p>Nota baseada em 41 avaliações reais de clientes no Google.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="container">
+    <div class="contato-box">
+      <div class="contato-texto">
+        <h2>Vamos falar sobre seu projeto?</h2>
+        <p>Entre em contato agora e receba atendimento rápido para orçamentos e dúvidas.</p>
+        <a href="https://wa.me/5511974142089" class="btn-primary" style="margin-top:20px;">📲 Iniciar Conversa</a>
+      </div>
+      <div class="contato-info">
+        <div class="contato-item">
+          <div class="icon">📞</div>
+          <div>
+            <strong>Telefone</strong>
+            <span>(11) 97414-2089</span>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="icon">💬</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>(11) 97414-2089</span>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="icon">📍</div>
+          <div>
+            <strong>Endereço</strong>
+            <span>[ADICIONAR: endereço]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">UM <span style="color:var(--dourado);">MILÍMETRO</span></div>
+  <p>Serralheria Um Milímetro © 2024 — Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5511974142089" class="wa-float">💬</a>
+
+</body>
+</html>
