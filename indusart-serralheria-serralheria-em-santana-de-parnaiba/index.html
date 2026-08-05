@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indusart Serralheria | Santana de Parnaíba</title>
+<style>
+  :root{
+    --preto: #0d0d0f;
+    --preto-suave: #17181b;
+    --cinza: #2a2c31;
+    --texto-claro: #f4f2ee;
+    --texto-suave: #b8b8bc;
+    --dourado: #d4a24e;
+    --dourado-claro: #f0c778;
+    --laranja: #e08a3c;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--preto);
+    color:var(--texto-claro);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* HEADER */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(13,13,15,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,162,78,0.15);
+  }
+  .header-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 24px;
+  }
+  .logo{
+    font-size:1.3rem;
+    font-weight:800;
+    letter-spacing:1px;
+    color:var(--texto-claro);
+  }
+  .logo span{color:var(--dourado);}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    color:var(--texto-suave);
+    transition:color .3s;
+  }
+  .nav-links a:hover{color:var(--dourado-claro);}
+  .btn-header{
+    display:none;
+  }
+  @media(min-width:768px){
+    .btn-header{
+      display:inline-block;
+      background:var(--dourado);
+      color:var(--preto);
+      padding:10px 22px;
+      border-radius:6px;
+      font-weight:700;
+      transition:transform .25s, background .25s;
+    }
+    .btn-header:hover{
+      background:var(--dourado-claro);
+      transform:translateY(-2px);
+    }
+  }
+  @media(max-width:767px){
+    .nav-links{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 100px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(212,162,78,0.15), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(224,138,60,0.12), transparent 45%),
+      linear-gradient(160deg, #0d0d0f 0%, #1a1b1e 55%, #0d0d0f 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 40px);
+    pointer-events:none;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+  }
+  .hero-tag{
+    display:inline-block;
+    background:rgba(212,162,78,0.12);
+    border:1px solid rgba(212,162,78,0.35);
+    color:var(--dourado-claro);
+    padding:6px 16px;
+    border-radius:30px;
+    font-size:0.8rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    font-weight:900;
+    line-height:1.08;
+    letter-spacing:-1px;
+    margin-bottom:20px;
+  }
+  .hero h1 .destaque{
+    background:linear-gradient(90deg, var(--dourado-claro), var(--laranja));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p{
+    font-size:1.15rem;
+    color:var(--texto-suave);
+    max-width:560px;
+    margin-bottom:36px;
+  }
+  .hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:40px;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--dourado), var(--laranja));
+    color:var(--preto);
+    padding:16px 32px;
+    border-radius:8px;
+    font-weight:800;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .3s, box-shadow .3s;
+    box-shadow:0 8px 24px rgba(212,162,78,0.25);
+  }
+  .btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 34px rgba(212,162,78,0.4);
+  }
+  .btn-secondary{
+    border:1.5px solid rgba(255,255,255,0.25);
+    color:var(--texto-claro);
+    padding:16px 30px;
+    border-radius:8px;
+    font-weight:700;
+    transition:all .3s;
+  }
+  .btn-secondary:hover{
+    background:rgba(255,255,255,0.06);
+    border-color:var(--dourado);
+  }
+  .hero-avaliacao{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .estrelas{color:var(--dourado-claro);font-size:1.2rem;letter-spacing:2px;}
+  .hero-avaliacao span{color:var(--texto-suave);font-size:0.95rem;}
+
+  /* SECTION GENERIC */
+  section{
+    padding:100px 0;
+    position:relative;
+  }
+  .section-tag{
+    color:var(--dourado);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:0.85rem;
+    font-weight:700;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    font-weight:900;
+    margin-bottom:20px;
+    letter-spacing:-0.5px;
+  }
+  .section-desc{
+    color:var(--texto-suave);
+    max-width:620px;
+    font-size:1.05rem;
+    margin-bottom:50px;
+  }
+
+  /* SOBRE */
+  .sobre{
+    background:var(--preto-suave);
+    border-top:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .sobre-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(min-width:900px){
+    .sobre-grid{grid-template-columns:1fr 1fr;}
+  }
+  .sobre-texto p{
+    color:var(--texto-suave);
+    margin-bottom:18px;
+    font-size:1.02rem;
+  }
+  .sobre-card{
+    background:linear-gradient(150deg, rgba(212,162,78,0.08), rgba(224,138,60,0.03));
+    border:1px solid rgba(212,162,78,0.2);
+    border-radius:16px;
+    padding:36px;
+  }
+  .sobre-card h3{
+    font-size:1.4rem;
+    margin-bottom:16px;
+    color:var(--dourado-claro);
+  }
+  .sobre-lista{
+    list-style:none;
+  }
+  .sobre-lista li{
+    padding:10px 0;
+    border-bottom:1px dashed rgba(255,255,255,0.1);
+    color:var(--texto-suave);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .sobre-lista li:last-child{border-bottom:none;}
+  .sobre-lista li::before{
+    content:"✓";
+    color:var(--dourado);
+    font-weight:900;
+  }
+
+  /* SERVIÇOS */
+  .servicos-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media(min-width:640px){
+    .servicos-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(min-width:1000px){
+    .servicos-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  .servico-card{
+    background:var(--preto-suave);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:34px 28px;
+    transition:transform .35s, border-color .35s, background .35s;
+  }
+  .servico-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(212,162,78,0.4);
+    background:#1c1d21;
+  }
+  .servico-icone{
+    width:52px;height:52px;
+    border-radius:12px;
+    background:linear-gradient(135deg, var(--dourado), var(--laranja));
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    margin-bottom:22px;
+    color:var(--preto);
+  }
+  .servico-card h3{
+    font-size:1.2rem;
+    margin-bottom:12px;
+  }
+  .servico-card p{
+    color:var(--texto-suave);
+    font-size:0.95rem;
+  }
+  .servico-placeholder{
+    grid-column:1/-1;
+    text-align:center;
+    padding:40px;
+    border:1.5px dashed rgba(212,162,78,0.35);
+    border-radius:16px;
+    color:var(--dourado-claro);
+    font-size:0.95rem;
+    background:rgba(212,162,78,0.05);
+  }
+
+  /* AVALIAÇÕES */
+  .avaliacoes{
+    background:var(--preto-suave);
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .avaliacao-box{
+    max-width:640px;
+    margin:0 auto;
+  }
+  .avaliacao-numero{
+    font-size:4.5rem;
+    font-weight:900;
+    background:linear-gradient(90deg, var(--dourado-claro), var(--laranja));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    line-height:1;
+  }
+  .avaliacao-estrelas{
+    color:var(--dourado-claro);
+    font-size:1.6rem;
+    letter-spacing:4px;
+    margin:14px 0;
+  }
+  .avaliacao-box p{
+    color:var(--texto-suave);
+    font-size:1.05rem;
+  }
+
+  /* CONTATO */
+  .contato{
+    background:
+      radial-gradient(circle at 30% 30%, rgba(212,162,78,0.1), transparent 50%),
+      var(--preto);
+  }
+  .contato-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  @media(min-width:900px){
+    .contato-grid{grid-template-columns:1.1fr 0.9fr;}
+  }
+  .contato-card{
+    background:var(--preto-suave);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:44px;
+  }
+  .contato-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:26px;
+  }
+  .contato-icone{
+    width:48px;height:48px;
+    border-radius:10px;
+    background:rgba(212,162,78,0.12);
+    border:1px solid rgba(212,162,78,0.3);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--dourado-claro);
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+  .contato-item h4{
+    font-size:1rem;
+    margin-bottom:4px;
+    color:var(--texto-claro);
+  }
+  .contato-item p, .contato-item a{
+    color:var(--texto-suave);
+    font-size:0.98rem;
+  }
+  .contato-item a:hover{color:var(--dourado-claro);}
+
+  .cta-final{
+    background:linear-gradient(135deg, var(--dourado), var(--laranja));
+    border-radius:20px;
+    padding:44px 34px;
+    color:var(--preto);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .cta-final h3{
+    font-size:1.6rem;
+    font-weight:900;
+    margin-bottom:14px;
+  }
+  .cta-final p{
+    margin-bottom:26px;
+    font-size:1rem;
+    opacity:0.85;
+  }
+  .btn-whats{
+    background:var(--preto);
+    color:#fff;
+    padding:16px 26px;
+    border-radius:10px;
+    font-weight:800;
+    text-align:center;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition:transform .3s, background .3s;
+  }
+  .btn-whats:hover{
+    transform:translateY(-3px);
+    background:#000;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--preto-suave);
+    padding:40px 0;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  footer p{
+    color:var(--texto-suave);
+    font-size:0.9rem;
+  }
+  footer .footer-logo{
+    font-weight:800;
+    color:var(--texto-claro);
+    margin-bottom:8px;
+  }
+  .placeholder-note{
+    color:#7a7a7d;
+    font-size:0.78rem;
+  }
+
+  /* FLOAT WHATSAPP */
+  .float-whats{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:200;
+    background:#25D366;
+    width:60px;height:60px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    font-size:1.6rem;
+    box-shadow:0 10px 30px rgba(37,211,102,0.4);
+    animation:pulse 2.4s infinite;
+    transition:transform .3s;
+  }
+  .float-whats:hover{transform:scale(1.1);}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">INDUSART <span>Serralheria</span></div>
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="https://wa.me/5511939248255" class="btn-header" target="_blank">Fale Conosco</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-tag">Serralheria em Santana de Parnaíba</span>
+      <h1>Estrutura, precisão e <span class="destaque">acabamento de excelência</span> em cada projeto.</h1>
+      <p>A Indusart Serralheria entrega soluções em metal com qualidade e confiança comprovadas pelos clientes de Santana de Parnaíba e região.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/5511939248255" class="btn-primary" target="_blank">💬 Solicitar Orçamento</a>
+        <a href="#servicos" class="btn-secondary">Ver Serviços</a>
+      </div>
+      <div class="hero-avaliacao">
+        <span class="estrelas">★★★★★</span>
+        <span>5.0 · 17 avaliações no Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="container">
+    <span class="section-tag">Quem somos</span>
+    <div class="sobre-grid">
+      <div class="sobre-texto">
+        <h2 class="section-title">Trabalho sério, resultado que fala por si.</h2>
+        <p>A Indusart Serralheria atua em Santana de Parnaíba com foco em qualidade e confiança, sendo reconhecida pelos próprios clientes com nota máxima nas avaliações.</p>
+        <p class="placeholder-note">[ADICIONAR: história completa da empresa, ano de fundação e diferenciais]</p>
+      </div>
+      <div class="sobre-card">
+        <h3>Por que escolher a Indusart</h3>
+        <ul class="sobre-lista">
+          <li>Avaliação 5.0 no Google (17 avaliações)</li>
+          <li>Atendimento direto via WhatsApp</li>
+          <li>Atuação em Santana de Parnaíba e região</li>
+          <li>Compromisso com qualidade e acabamento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <span class="section-tag">O que fazemos</span>
+    <h2 class="section-title">Nossos Serviços</h2>
+    <p class="section-desc">Soluções completas em serralheria, do projeto à instalação final.</p>
+    <div class="servicos-grid">
+      <div class="servico-placeholder">
+        [ADICIONAR: lista de serviços oferecidos pela Indusart Serralheria — ex. portões, grades, estruturas metálicas, escadas, corrimãos]
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avaliacoes" id="avaliacoes">
+  <div class="container">
+    <span class="section-tag">Reputação</span>
+    <div class="avaliacao-box">
+      <div class="avaliacao-numero">5.0</div>
+      <div class="avaliacao-estrelas">★★★★★</div>
+      <p>Baseado em 17 avaliações reais de clientes no Google, a Indusart Serralheria mantém nota máxima em atendimento e qualidade de serviço.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="container">
+    <span class="section-tag">Fale com a gente</span>
+    <h2 class="section-title">Vamos tirar seu projeto do papel</h2>
+    <p class="section-desc">Entre em contato agora mesmo e solicite seu orçamento sem compromisso.</p>
+    <div class="contato-grid">
+      <div class="contato-card">
+        <div class="contato-item">
+          <div class="contato-icone">📞</div>
+          <div>
+            <h4>Telefone</h4>
+            <a href="tel:+5511939248255">(11) 93924-8255</a>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-icone">💬</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <a href="https://wa.me/5511939248255" target="_blank">(11) 93924-8255</a>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-icone">📍</div>
+          <div>
+            <h4>Endereço</h4>
+            <p class="placeholder-note">[ADICIONAR: endereço completo da Indusart Serralheria]</p>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-icone">📍</div>
+          <div>
+            <h4>Cidade</h4>
+            <p>Santana de Parnaíba - SP</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-final">
+        <h3>Peça seu orçamento agora</h3>
+        <p>Resposta rápida direto pelo WhatsApp, sem burocracia.</p>
+        <a href="https://wa.me/5511939248255" class="btn-whats" target="_blank">💬 Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">INDUSART SERRALHERIA</div>
+  <p>Serralheria em Santana de Parnaíba · (11) 93924-8255</p>
+  <p style="margin-top:8px;">© 2024 Indusart Serralheria. Todos os direitos reservados.</p>
+</footer>
+
+<a href="https://wa.me/5511939248255" class="float-whats" target="_blank">💬</a>
+
+</body>
+</html>
