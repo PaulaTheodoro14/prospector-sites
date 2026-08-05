@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Serralheria Um Milímetro</title>
+<title>Serralheria Um Milímetro | Precisão em Metal</title>
 <style>
   :root{
     --preto: #0d0d0f;
-    --preto-claro: #1a1a1e;
-    --dourado: #d4a94e;
-    --dourado-claro: #f0ce8a;
-    --cinza: #8a8a92;
-    --branco: #f7f6f3;
+    --preto2: #17171a;
+    --cinza: #2b2b30;
+    --cinza-claro: #8a8a92;
+    --ambar: #ff8a1e;
+    --ambar-claro: #ffb35c;
+    --branco: #f7f7f5;
+    --linha: rgba(255,255,255,0.08);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -19,16 +21,17 @@
   html{scroll-behavior:smooth;}
 
   body{
-    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     background:var(--preto);
     color:var(--branco);
+    line-height:1.6;
     overflow-x:hidden;
   }
 
   a{text-decoration:none;color:inherit;}
 
   .container{
-    max-width:1180px;
+    max-width:1150px;
     margin:0 auto;
     padding:0 24px;
   }
@@ -40,14 +43,14 @@
     z-index:100;
     background:rgba(13,13,15,0.85);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(212,169,78,0.15);
+    border-bottom:1px solid var(--linha);
   }
-  .header-inner{
+  .nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 24px;
-    max-width:1180px;
+    padding:16px 24px;
+    max-width:1150px;
     margin:0 auto;
   }
   .logo{
@@ -56,160 +59,186 @@
     letter-spacing:0.5px;
     text-transform:uppercase;
   }
-  .logo span{color:var(--dourado);}
-  .header-cta{
-    background:var(--dourado);
-    color:var(--preto);
-    padding:10px 22px;
-    border-radius:30px;
-    font-weight:700;
+  .logo span{color:var(--ambar);}
+  .nav-links{
+    display:flex;
+    gap:30px;
     font-size:0.9rem;
-    transition:transform .25s ease, box-shadow .25s ease;
+    font-weight:600;
+    letter-spacing:0.5px;
   }
-  .header-cta:hover{
+  .nav-links a{
+    opacity:0.85;
+    transition:opacity .25s, color .25s;
+    text-transform:uppercase;
+    font-size:0.8rem;
+  }
+  .nav-links a:hover{opacity:1;color:var(--ambar);}
+  .nav-cta{
+    background:var(--ambar);
+    color:var(--preto);
+    padding:10px 20px;
+    border-radius:6px;
+    font-weight:700;
+    font-size:0.85rem;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .nav-cta:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 22px rgba(212,169,78,0.35);
+    box-shadow:0 8px 20px rgba(255,138,30,0.35);
+  }
+  @media (max-width:768px){
+    .nav-links{display:none;}
   }
 
   /* ===== HERO ===== */
   .hero{
+    position:relative;
     min-height:100vh;
     display:flex;
     align-items:center;
-    position:relative;
-    padding:140px 0 100px;
+    padding:120px 0 80px;
     background:
-      radial-gradient(circle at 15% 20%, rgba(212,169,78,0.18), transparent 45%),
-      radial-gradient(circle at 85% 80%, rgba(212,169,78,0.12), transparent 50%),
-      linear-gradient(160deg, #0d0d0f 0%, #171719 45%, #0d0d0f 100%);
+      radial-gradient(circle at 15% 20%, rgba(255,138,30,0.18), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(255,138,30,0.12), transparent 40%),
+      linear-gradient(160deg, #0d0d0f 0%, #1a1a1d 55%, #0d0d0f 100%);
     overflow:hidden;
   }
   .hero::before{
-    content:'';
+    content:"";
     position:absolute;
-    top:-20%;
-    right:-15%;
-    width:60%;
-    height:140%;
-    background:
-      repeating-linear-gradient(45deg, rgba(212,169,78,0.05) 0 2px, transparent 2px 40px);
-    transform:rotate(8deg);
-    pointer-events:none;
+    inset:0;
+    background-image:
+      linear-gradient(var(--linha) 1px, transparent 1px),
+      linear-gradient(90deg, var(--linha) 1px, transparent 1px);
+    background-size:60px 60px;
+    opacity:0.35;
+    mask-image: radial-gradient(circle at 50% 40%, black 10%, transparent 70%);
   }
   .hero-content{
     position:relative;
     z-index:2;
-    max-width:720px;
+    max-width:760px;
   }
   .hero-badge{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    background:rgba(212,169,78,0.12);
-    border:1px solid rgba(212,169,78,0.4);
-    color:var(--dourado-claro);
+    background:rgba(255,138,30,0.12);
+    border:1px solid rgba(255,138,30,0.35);
+    color:var(--ambar-claro);
     padding:8px 16px;
     border-radius:30px;
-    font-size:0.82rem;
-    font-weight:600;
-    margin-bottom:26px;
-    letter-spacing:0.3px;
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.5px;
+    margin-bottom:28px;
+    text-transform:uppercase;
   }
   .hero h1{
-    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    font-weight:900;
     line-height:1.05;
-    font-weight:800;
     letter-spacing:-1px;
-    margin-bottom:22px;
+    text-transform:uppercase;
+    margin-bottom:24px;
   }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--dourado);
-    display:block;
-  }
-  .hero p.lead{
+  .hero h1 .accent{color:var(--ambar);}
+  .hero p{
     font-size:1.15rem;
-    color:var(--cinza);
-    max-width:520px;
+    color:var(--cinza-claro);
+    max-width:560px;
     margin-bottom:38px;
-    line-height:1.6;
   }
-  .hero-actions{
+  .hero-cta-group{
     display:flex;
     gap:16px;
     flex-wrap:wrap;
   }
   .btn-primary{
-    background:var(--dourado);
+    background:var(--ambar);
     color:var(--preto);
-    padding:16px 34px;
-    border-radius:40px;
-    font-weight:700;
+    padding:16px 32px;
+    font-weight:800;
+    border-radius:8px;
     font-size:1rem;
+    letter-spacing:0.5px;
     display:inline-flex;
     align-items:center;
     gap:10px;
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .3s, box-shadow .3s, background .3s;
   }
   .btn-primary:hover{
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 12px 30px rgba(212,169,78,0.4);
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(255,138,30,0.4);
+    background:var(--ambar-claro);
   }
   .btn-secondary{
-    border:1px solid rgba(255,255,255,0.25);
+    border:1px solid var(--linha);
     color:var(--branco);
-    padding:16px 30px;
-    border-radius:40px;
-    font-weight:600;
+    padding:16px 32px;
+    font-weight:700;
+    border-radius:8px;
     font-size:1rem;
-    transition:all .25s ease;
+    transition:border-color .3s, background .3s;
   }
   .btn-secondary:hover{
-    border-color:var(--dourado);
-    color:var(--dourado);
+    border-color:var(--ambar);
+    background:rgba(255,138,30,0.08);
   }
 
-  .hero-rating{
-    margin-top:44px;
+  .hero-stats{
     display:flex;
-    align-items:center;
-    gap:14px;
+    gap:40px;
+    margin-top:60px;
+    flex-wrap:wrap;
   }
-  .stars{
-    color:var(--dourado);
-    font-size:1.2rem;
-    letter-spacing:2px;
+  .hero-stat h3{
+    font-size:2rem;
+    font-weight:800;
+    color:var(--ambar);
   }
-  .hero-rating small{
-    color:var(--cinza);
-    font-size:0.88rem;
+  .hero-stat span{
+    font-size:0.85rem;
+    color:var(--cinza-claro);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
   }
 
-  /* ===== SECTION TITLE ===== */
-  .section-title{
-    text-align:center;
-    margin-bottom:60px;
+  /* ===== SECTION TITLES ===== */
+  .section{
+    padding:100px 0;
+    position:relative;
   }
-  .section-title .tag{
-    color:var(--dourado);
-    font-weight:700;
-    letter-spacing:2px;
-    font-size:0.8rem;
-    text-transform:uppercase;
-    display:block;
-    margin-bottom:14px;
-  }
-  .section-title h2{
-    font-size:clamp(1.8rem, 4vw, 2.8rem);
+  .section-tag{
+    color:var(--ambar);
     font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    margin-bottom:16px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(2rem, 4.5vw, 3rem);
+    font-weight:900;
+    text-transform:uppercase;
     letter-spacing:-0.5px;
+    margin-bottom:20px;
+    line-height:1.1;
+  }
+  .section-desc{
+    color:var(--cinza-claro);
+    max-width:600px;
+    font-size:1.05rem;
+    margin-bottom:50px;
   }
 
   /* ===== SOBRE ===== */
   .sobre{
-    padding:110px 0;
-    background:var(--preto-claro);
-    position:relative;
+    background:var(--preto2);
+    border-top:1px solid var(--linha);
+    border-bottom:1px solid var(--linha);
   }
   .sobre-grid{
     display:grid;
@@ -219,328 +248,385 @@
   }
   .sobre-visual{
     height:380px;
-    border-radius:20px;
+    border-radius:16px;
     background:
-      linear-gradient(135deg, rgba(212,169,78,0.25), rgba(212,169,78,0.05)),
-      repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 3px, transparent 3px 22px);
-    border:1px solid rgba(212,169,78,0.25);
+      linear-gradient(135deg, rgba(255,138,30,0.25), transparent 60%),
+      repeating-linear-gradient(45deg, #1f1f23 0 2px, #17171a 2px 30px);
+    border:1px solid var(--linha);
+    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:5rem;
-    color:rgba(212,169,78,0.5);
+    overflow:hidden;
   }
-  .sobre-texto h2{
-    font-size:2.2rem;
-    font-weight:800;
-    margin-bottom:22px;
-    letter-spacing:-0.5px;
+  .sobre-visual::after{
+    content:"⚒";
+    font-size:6rem;
+    color:rgba(255,138,30,0.3);
   }
-  .sobre-texto p{
-    color:var(--cinza);
+  .sobre-text p{
+    color:var(--cinza-claro);
+    margin-bottom:20px;
     font-size:1.05rem;
-    line-height:1.75;
-    margin-bottom:18px;
   }
-  .placeholder-tag{
-    display:inline-block;
-    background:rgba(255,255,255,0.06);
-    border:1px dashed rgba(212,169,78,0.4);
-    color:var(--dourado-claro);
-    font-size:0.82rem;
-    padding:6px 14px;
-    border-radius:8px;
+  .sobre-list{
+    list-style:none;
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .sobre-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+  }
+  .sobre-list li::before{
+    content:"✓";
+    color:var(--ambar);
+    font-weight:900;
+    background:rgba(255,138,30,0.12);
+    width:26px;height:26px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  @media (max-width:800px){
+    .sobre-grid{grid-template-columns:1fr;}
+    .sobre-visual{height:240px;order:-1;}
   }
 
-  /* ===== SERVICOS ===== */
-  .servicos{
-    padding:110px 0;
-  }
+  /* ===== SERVIÇOS ===== */
   .servicos-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-    gap:26px;
+    gap:24px;
   }
   .servico-card{
-    background:var(--preto-claro);
-    border:1px solid rgba(255,255,255,0.06);
-    border-radius:18px;
-    padding:36px 28px;
-    transition:transform .3s ease, border-color .3s ease, background .3s ease;
+    background:var(--preto2);
+    border:1px solid var(--linha);
+    border-radius:14px;
+    padding:32px 26px;
+    transition:transform .3s, border-color .3s, background .3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .servico-card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg, var(--ambar), transparent);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .35s;
   }
   .servico-card:hover{
     transform:translateY(-8px);
-    border-color:rgba(212,169,78,0.5);
-    background:#1f1f23;
+    border-color:rgba(255,138,30,0.4);
+    background:#1c1c20;
   }
+  .servico-card:hover::before{transform:scaleX(1);}
   .servico-icon{
-    width:52px;height:52px;
-    border-radius:14px;
-    background:rgba(212,169,78,0.15);
-    color:var(--dourado);
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.5rem;
-    margin-bottom:22px;
+    font-size:2rem;
+    margin-bottom:18px;
+    display:inline-block;
   }
   .servico-card h3{
     font-size:1.15rem;
+    font-weight:800;
     margin-bottom:10px;
-    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
   }
   .servico-card p{
-    color:var(--cinza);
+    color:var(--cinza-claro);
     font-size:0.95rem;
-    line-height:1.6;
+  }
+  .placeholder-tag{
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.72rem;
+    color:#6b6b72;
+    border:1px dashed #444;
+    padding:3px 8px;
+    border-radius:4px;
   }
 
-  /* ===== AVALIACAO ===== */
-  .avaliacao{
-    padding:90px 0;
-    background:linear-gradient(135deg, rgba(212,169,78,0.08), transparent);
-    border-top:1px solid rgba(212,169,78,0.15);
-    border-bottom:1px solid rgba(212,169,78,0.15);
+  /* ===== AVALIAÇÕES ===== */
+  .avaliacoes{
+    background:linear-gradient(160deg, #17171a, #0d0d0f);
+    border-top:1px solid var(--linha);
+    border-bottom:1px solid var(--linha);
   }
   .avaliacao-box{
-    max-width:700px;
-    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+    background:var(--preto2);
+    border:1px solid var(--linha);
+    border-radius:18px;
+    padding:50px;
+  }
+  .avaliacao-score{
     text-align:center;
+    min-width:180px;
   }
-  .avaliacao-box .stars{font-size:2rem;}
-  .avaliacao-box h3{
-    font-size:2.4rem;
-    font-weight:800;
-    margin:16px 0 8px;
+  .avaliacao-score h2{
+    font-size:4rem;
+    font-weight:900;
+    color:var(--ambar);
+    line-height:1;
   }
-  .avaliacao-box p{
-    color:var(--cinza);
-    font-size:1.05rem;
+  .stars{
+    color:var(--ambar);
+    font-size:1.4rem;
+    margin:10px 0;
+    letter-spacing:4px;
+  }
+  .avaliacao-score span{
+    color:var(--cinza-claro);
+    font-size:0.9rem;
+  }
+  .avaliacao-quote{
+    flex:1;
+    min-width:260px;
+  }
+  .avaliacao-quote p{
+    font-size:1.2rem;
+    font-weight:600;
+    color:var(--branco);
+    font-style:italic;
+    line-height:1.5;
+  }
+  .avaliacao-quote span{
+    display:block;
+    margin-top:16px;
+    color:var(--cinza-claro);
+    font-size:0.9rem;
+  }
+  @media (max-width:700px){
+    .avaliacao-box{padding:32px 24px;flex-direction:column;text-align:center;}
   }
 
   /* ===== CONTATO ===== */
   .contato{
-    padding:110px 0 130px;
+    text-align:center;
   }
-  .contato-box{
-    background:var(--preto-claro);
-    border-radius:26px;
-    padding:60px;
+  .contato .section-title{margin-bottom:14px;}
+  .contato .section-desc{margin:0 auto 50px;text-align:center;}
+  .contato-cards{
     display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:50px;
-    align-items:center;
-    border:1px solid rgba(212,169,78,0.2);
-    position:relative;
-    overflow:hidden;
-  }
-  .contato-box::after{
-    content:'';
-    position:absolute;
-    right:-100px;top:-100px;
-    width:260px;height:260px;
-    background:radial-gradient(circle, rgba(212,169,78,0.25), transparent 70%);
-  }
-  .contato-texto h2{
-    font-size:2.2rem;
-    font-weight:800;
-    margin-bottom:18px;
-    letter-spacing:-0.5px;
-  }
-  .contato-texto p{
-    color:var(--cinza);
-    font-size:1.05rem;
-    line-height:1.7;
-    margin-bottom:10px;
-  }
-  .contato-info{
-    display:flex;
-    flex-direction:column;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
+    max-width:900px;
+    margin:0 auto 50px;
   }
-  .contato-item{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    background:rgba(255,255,255,0.03);
-    padding:18px 22px;
+  .contato-card{
+    background:var(--preto2);
+    border:1px solid var(--linha);
     border-radius:14px;
-    border:1px solid rgba(255,255,255,0.06);
+    padding:30px 20px;
+    transition:transform .3s, border-color .3s;
   }
-  .contato-item .icon{
-    width:42px;height:42px;
-    border-radius:10px;
-    background:var(--dourado);
-    color:var(--preto);
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.1rem;
-    flex-shrink:0;
+  .contato-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,138,30,0.4);
   }
-  .contato-item strong{
-    display:block;
-    font-size:0.78rem;
-    color:var(--cinza);
+  .contato-card .icon{font-size:1.8rem;margin-bottom:12px;}
+  .contato-card h4{
+    font-size:0.85rem;
     text-transform:uppercase;
     letter-spacing:1px;
-    margin-bottom:2px;
+    color:var(--cinza-claro);
+    margin-bottom:8px;
   }
-  .contato-item span{
-    font-size:1.05rem;
-    font-weight:600;
+  .contato-card p{
+    font-size:1.15rem;
+    font-weight:800;
+  }
+  .cta-final{
+    margin-top:20px;
   }
 
   /* ===== FOOTER ===== */
   footer{
-    background:#0a0a0b;
-    padding:36px 0;
+    padding:40px 0;
+    border-top:1px solid var(--linha);
     text-align:center;
-    color:var(--cinza);
+    color:var(--cinza-claro);
     font-size:0.85rem;
-    border-top:1px solid rgba(255,255,255,0.06);
   }
-  footer .logo{margin-bottom:10px;}
+  footer .logo{margin-bottom:12px;display:inline-block;}
 
-  /* Whatsapp float */
-  .wa-float{
+  /* WhatsApp float */
+  .whats-float{
     position:fixed;
-    bottom:26px;right:26px;
+    bottom:24px;
+    right:24px;
+    z-index:200;
     background:#25D366;
     color:#fff;
-    width:60px;height:60px;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-size:1.7rem;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-    z-index:200;
-    transition:transform .25s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    transition:transform .3s;
   }
-  .wa-float:hover{transform:scale(1.1);}
+  .whats-float:hover{transform:scale(1.1);}
 
-  @media (max-width:860px){
-    .sobre-grid, .contato-box{
-      grid-template-columns:1fr;
-    }
-    .contato-box{padding:36px 24px;}
-    .header-cta{padding:8px 16px;font-size:0.8rem;}
-    .hero{padding:120px 0 80px;}
+  /* Fade in animation */
+  .fade-up{
+    animation:fadeUp 0.9s ease both;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(24px);}
+    to{opacity:1;transform:translateY(0);}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo">UM <span>MILÍMETRO</span></div>
-    <a href="#contato" class="header-cta">Fale Conosco</a>
+  <div class="nav">
+    <div class="logo">UM<span>·</span>MILÍMETRO</div>
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/5511974142089" target="_blank">Solicitar Orçamento</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="hero-badge">★ 4.8 avaliação Google · 41 avaliações</span>
-      <h1>Precisão que se sente<br><em>até no milímetro.</em></h1>
-      <p class="lead">Serralheria Um Milímetro — soluções em metal com acabamento impecável e atenção a cada detalhe do seu projeto.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/5511974142089" class="btn-primary">📲 Chamar no WhatsApp</a>
-        <a href="#servicos" class="btn-secondary">Ver Serviços</a>
-      </div>
-      <div class="hero-rating">
-        <span class="stars">★★★★★</span>
-        <small>4.8 de 5 · baseado em 41 avaliações no Google</small>
-      </div>
+  <div class="container hero-content fade-up">
+    <span class="hero-badge">★ 4.8 · 41 avaliações no Google</span>
+    <h1>Precisão que se mede no <span class="accent">milímetro.</span></h1>
+    <p>Serralheria Um Milímetro: metal trabalhado com exatidão, força e acabamento premium. Projetos feitos para durar — sem margem para erro.</p>
+    <div class="hero-cta-group">
+      <a class="btn-primary" href="https://wa.me/5511974142089" target="_blank">📲 Falar no WhatsApp</a>
+      <a class="btn-secondary" href="#servicos">Ver Serviços</a>
     </div>
-  </div>
-</section>
-
-<section class="sobre">
-  <div class="container">
-    <div class="sobre-grid">
-      <div class="sobre-visual">⚒️</div>
-      <div class="sobre-texto">
-        <h2>Sobre a Um Milímetro</h2>
-        <p>Serralheria dedicada a entregar trabalhos com precisão milimétrica e acabamento de qualidade.</p>
-        <p class="placeholder-tag">[ADICIONAR: descrição completa, categoria e cidade de atuação]</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <h3>4.8★</h3>
+        <span>Avaliação Google</span>
+      </div>
+      <div class="hero-stat">
+        <h3>41+</h3>
+        <span>Clientes avaliaram</span>
+      </div>
+      <div class="hero-stat">
+        <h3>100%</h3>
+        <span>Trabalho sob medida</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="servicos" id="servicos">
-  <div class="container">
-    <div class="section-title">
-      <span class="tag">O que fazemos</span>
-      <h2>Nossos Serviços</h2>
+<section class="section sobre" id="sobre">
+  <div class="container sobre-grid">
+    <div class="sobre-text fade-up">
+      <span class="section-tag">Sobre nós</span>
+      <h2 class="section-title">Metal, técnica<br>e precisão.</h2>
+      <p>A Serralheria Um Milímetro constrói sua reputação com trabalho sério e resultado de qualidade — reconhecido pelos próprios clientes na avaliação de 4.8 estrelas no Google.</p>
+      <p>[ADICIONAR: história detalhada da empresa, ano de fundação e diferenciais]</p>
+      <ul class="sobre-list">
+        <li>Atendimento direto via WhatsApp</li>
+        <li>Avaliação 4.8★ no Google</li>
+        <li>Compromisso com prazo e acabamento</li>
+      </ul>
     </div>
+    <div class="sobre-visual fade-up"></div>
+  </div>
+</section>
+
+<section class="section" id="servicos">
+  <div class="container">
+    <span class="section-tag">O que fazemos</span>
+    <h2 class="section-title">Serviços em serralheria</h2>
+    <p class="section-desc">Lista de serviços ainda não cadastrada. Fale com a gente para saber exatamente o que podemos produzir para o seu projeto.</p>
     <div class="servicos-grid">
-      <div class="servico-card">
-        <div class="servico-icon">🔧</div>
-        <h3>[ADICIONAR: serviço 1]</h3>
-        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      <div class="servico-card fade-up">
+        <span class="servico-icon">🔧</span>
+        <h3>Estruturas Metálicas</h3>
+        <p>Fabricação sob medida com acabamento de precisão.</p>
+        <span class="placeholder-tag">[ADICIONAR: descrição real]</span>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">🛠️</div>
-        <h3>[ADICIONAR: serviço 2]</h3>
-        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      <div class="servico-card fade-up">
+        <span class="servico-icon">🚪</span>
+        <h3>Portões e Grades</h3>
+        <p>Segurança e design em ferro e aço.</p>
+        <span class="placeholder-tag">[ADICIONAR: descrição real]</span>
       </div>
-      <div class="servico-card">
-        <div class="servico-icon">⚙️</div>
-        <h3>[ADICIONAR: serviço 3]</h3>
-        <p>Detalhes do serviço ainda não cadastrados. Entre em contato para saber mais.</p>
+      <div class="servico-card fade-up">
+        <span class="servico-icon">🛠️</span>
+        <h3>Manutenção e Reparos</h3>
+        <p>Serviços técnicos com precisão milimétrica.</p>
+        <span class="placeholder-tag">[ADICIONAR: descrição real]</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="avaliacao">
+<section class="section avaliacoes" id="avaliacoes">
   <div class="container">
-    <div class="avaliacao-box">
-      <span class="stars">★★★★★</span>
-      <h3>4.8 / 5</h3>
-      <p>Nota baseada em 41 avaliações reais de clientes no Google.</p>
+    <span class="section-tag">Reputação</span>
+    <h2 class="section-title">O que dizem sobre nós</h2>
+    <div class="avaliacao-box fade-up">
+      <div class="avaliacao-score">
+        <h2>4.8</h2>
+        <div class="stars">★★★★★</div>
+        <span>41 avaliações no Google</span>
+      </div>
+      <div class="avaliacao-quote">
+        <p>"Trabalho reconhecido pelos clientes, com nota alta no Google — precisão e confiança em cada serviço."</p>
+        <span>[ADICIONAR: depoimento real de cliente]</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="contato" id="contato">
+<section class="section contato" id="contato">
   <div class="container">
-    <div class="contato-box">
-      <div class="contato-texto">
-        <h2>Vamos falar sobre seu projeto?</h2>
-        <p>Entre em contato agora e receba atendimento rápido para orçamentos e dúvidas.</p>
-        <a href="https://wa.me/5511974142089" class="btn-primary" style="margin-top:20px;">📲 Iniciar Conversa</a>
+    <span class="section-tag">Fale com a gente</span>
+    <h2 class="section-title">Vamos ao seu projeto</h2>
+    <p class="section-desc">Envie sua demanda agora mesmo pelo WhatsApp ou telefone.</p>
+    <div class="contato-cards">
+      <div class="contato-card fade-up">
+        <div class="icon">📞</div>
+        <h4>Telefone</h4>
+        <p>(11) 97414-2089</p>
       </div>
-      <div class="contato-info">
-        <div class="contato-item">
-          <div class="icon">📞</div>
-          <div>
-            <strong>Telefone</strong>
-            <span>(11) 97414-2089</span>
-          </div>
-        </div>
-        <div class="contato-item">
-          <div class="icon">💬</div>
-          <div>
-            <strong>WhatsApp</strong>
-            <span>(11) 97414-2089</span>
-          </div>
-        </div>
-        <div class="contato-item">
-          <div class="icon">📍</div>
-          <div>
-            <strong>Endereço</strong>
-            <span>[ADICIONAR: endereço]</span>
-          </div>
-        </div>
+      <div class="contato-card fade-up">
+        <div class="icon">💬</div>
+        <h4>WhatsApp</h4>
+        <p>(11) 97414-2089</p>
+      </div>
+      <div class="contato-card fade-up">
+        <div class="icon">📍</div>
+        <h4>Endereço</h4>
+        <p>[ADICIONAR: endereço]</p>
       </div>
     </div>
+    <a class="btn-primary cta-final" href="https://wa.me/5511974142089" target="_blank">📲 Solicitar Orçamento Agora</a>
   </div>
 </section>
 
 <footer>
-  <div class="logo">UM <span style="color:var(--dourado);">MILÍMETRO</span></div>
-  <p>Serralheria Um Milímetro © 2024 — Todos os direitos reservados.</p>
+  <div class="logo">UM <span style="color:var(--ambar)">·</span> MILÍMETRO</div>
+  <p>Serralheria Um Milímetro — (11) 97414-2089</p>
+  <p>[ADICIONAR: cidade e endereço completo] · © 2024 Todos os direitos reservados</p>
 </footer>
 
-<a href="https://wa.me/5511974142089" class="wa-float">💬</a>
+<a class="whats-float" href="https://wa.me/5511974142089" target="_blank">💬</a>
 
 </body>
 </html>
